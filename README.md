@@ -1,8 +1,8 @@
 # SwiftScraper
 
-![](https://api.travis-ci.org/cweatureapps/SwiftScraper.svg?branch=master)
+[![CI Status](https://github.com/Nef10/SwiftScraper/workflows/CI/badge.svg?event=push)](https://github.com/Nef10/SwiftScraper/actions?query=workflow%3A%22CI%22) [![Documentation percentage](https://nef10.github.io/SwiftScraper/badge.svg)](https://nef10.github.io/SwiftScraper/) [![License: MIT](https://img.shields.io/github/license/Nef10/SwiftScraper)](https://github.com/Nef10/SwiftScraper/blob/main/LICENSE) [![Latest version](https://img.shields.io/github/v/release/Nef10/SwiftScraper?label=SemVer&sort=semver)](https://github.com/Nef10/SwiftScraper/releases) ![platforms supported: macOS | iOS](https://img.shields.io/badge/platform-macOS%20%7C%20iOS-blue) ![SPM compatible](https://img.shields.io/badge/SPM-compatible-blue)
 
-Web scraping library for Swift.
+Web scraping library for Swift. This is a fork of [cweatureapps/SwiftScraper](https://github.com/cweatureapps/SwiftScraper), to offer the library as swift package.
 
 # Overview
 
@@ -16,32 +16,25 @@ This framework provides a simple way to declaratively define a series of steps i
 * Passing data between steps
 * Control flow to determine which step to run next, allowing basic conditionals and loops
 
-# Example
-
-If you want to read the finished code example straight away:
-
-* [Swift code that performs a google text search](https://github.com/cweatureapps/SwiftScraper/blob/master/Example/SwiftScraperExample/TutorialViewController.swift)
-* [Swift code that performs a google image search, and scrolls to count all images](https://github.com/cweatureapps/SwiftScraper/blob/master/Example/SwiftScraperExample/AdvancedTutorialViewController.swift)
-* [The Javascript used in the above examples](https://github.com/cweatureapps/SwiftScraper/blob/master/Example/SwiftScraperExample/GoogleSearch.js)
-
-For a step by step guide on how to implement these, read the next two sections.
-
 
 # Tutorial
 
-In this tutorial, we'll cover the basic usage of this framework by performing a search on the google web site.
+In this tutorial, we'll cover the basic usage of this framework by performing a Google search.
 
-## CocoaPod integration
+## Add package via Swift Package Manager
 
-Reference this pod in your Podfile:
-```ruby
-pod "SwiftScraper", git: "https://github.com/cweatureapps/SwiftScraper.git"
+Add this dependency to your `Package.swift` file:
+```swift
+.package(url: "https://github.com/Nef10/SwiftScraper.git", .exact("X.Y.Z")),
 ```
+
+*Note: as per semantic versioning all versions changes < 1.0.0 can be breaking, so please use `.exact` for now*
+
 ## JavaScript setup
 
 By convention, all the steps will use the functions exposed in a single module which is defined in a single JavaScript file.
 
-For this exercise, create a new file, `GoogleSearch.js`
+For this exercise, create a new file called `GoogleSearch.js`.
 
 Start by creating the blank JavaScript module structure, making sure the module name is the same as the file name:
 
@@ -81,7 +74,7 @@ When you run this, you will see a web view opening the Google home page.
 
 > The web view typically needs to be have a visible frame size, because web sites often use responsive breakpoints and will even sometimes change the HTML structure based on the dimensions of the page.
 >
-> The `insertWebViewIntoView` method helps you to easily insert the web view into any `UIView` that you have. It is up to you to set up the dimensions of the parent view, or you can even hide it where the user cannot see it.
+> The `insertWebViewIntoView` method helps you to easily insert the web view into any `NSView` / `UIView` that you have, while automatically constraining it to the same size. It is up to you to set up the dimensions of the parent view, or you can even hide it where the user cannot see it.
 
 ## Check that the page loaded
 
@@ -103,28 +96,26 @@ var GoogleSearch = (function() {
 In the view controller where you created the step, include the name of the assertion function:
 
 ```swift
-let step1 = OpenPageStep(
-                path: "https://www.google.com",
-                assertionName: "assertGoogleTitle")
-
+let step1 = OpenPageStep(path: "https://www.google.com", assertionName: "assertGoogleTitle")
 ```
 
 > The assertion function runs immediately when the page loads.
 > Sometimes, what you are asserting may not be ready at the point when the page loads,
 > as the website may modify the page asynchronously after loading.
+> In this case check out the advanced usage to add a step which waits till the page is loaded.
 
 ## Observe progress of the run
 
-You can observe the progress of the execution by observing the `state` property of the StepRunner object.
+You can observe the progress of the execution by adding a `stateObserver` to the stepRunner.
 
 ```swift
-    stepRunner.state.afterChange.add { change in
-        print("-----", change.newValue, "-----")
-        switch change.newValue {
+    stepRunner.stateObservers.append { newValue in
+        print("-----", newValue, "-----")
+        switch newValue {
         case .inProgress(let index):
             print("About to run step at index", index)
         case .failure(let error):
-            print("Failed: ", error.localizedDescription)
+            print("Failed: \(error.localizedDescription)")
         case .success:
             print("Finished successfully")
         default:
@@ -136,7 +127,7 @@ You can observe the progress of the execution by observing the `state` property 
 
 ## Run script that loads page
 
-Let's now run some custom JavaScript to submit a google search. This is the `PageChangeStep` which runs some JavaScript, which will result in a new page being loaded. When the page is loaded, it will proceed to the next step.
+Let's now run some custom JavaScript to submit a Google search. This is the `PageChangeStep` which runs some JavaScript, which will result in a new page being loaded. When the page is loaded, it will proceed to the next step.
 
 Firstly, in the `GoogleSearch.js` file, add the following 2 functions which perform the search, and exposes them in the module:
 
@@ -148,10 +139,10 @@ var GoogleSearch = (function() {
     function performSearch(searchText) {
         document.querySelector('input[type="text"], input[type="Search"]').value = searchText;
         document.forms[0].submit();
-    }    
+    }
     function assertSearchResultTitle() {
         return document.title == "SwiftScraper iOS - Google Search";
-    }  
+    }
     return {
         assertGoogleTitle: assertGoogleTitle,
         performSearch: performSearch,
@@ -163,11 +154,7 @@ var GoogleSearch = (function() {
 In the view controller, add step 2 which is the `PageChangeStep`, referencing the JavaScript functions you just implemented:
 
 ```swift
-let step2 = PageChangeStep(
-                functionName: "performSearch",
-                params: "SwiftScraper iOS",
-                assertionName: "assertSearchResultTitle")
-
+let step2 = PageChangeStep(functionName: "performSearch", params: "SwiftScraper iOS", assertionName: "assertSearchResultTitle")
 ```
 
 Notice the `params` parameter in the initializer, which allows you to pass data to the JavaScript function.
@@ -226,7 +213,7 @@ stepRunner = StepRunner(moduleName: "GoogleSearch", steps: [step1, step2, step3]
 
 Run this. You should see the steps complete successfully, and print the search results to the console.
 
-Congratulations! 🎉 You've finished the tutorial on the basic usage of this library! 👍
+Congratulations!  You've finished the tutorial on the basic usage of this library! 🎉
 
 # Advanced Usage
 
@@ -236,7 +223,7 @@ It is possible to run some JavaScript that does not return immediately, and wait
 
 To pass data back to Swift world, call `SwiftScraper.postMessage()`, passing a single object that can be serialized back to a Swift object.
 
-In this example, we'll do a google image search, and then scroll down to the bottom. The infinite scroll pattern employed here will load more images when we do this, and we'll do a count of the images before and after the scroll.
+In this example, we'll do a Google image search, and then scroll down to the bottom. The infinite scroll pattern employed here will load more images when we do this, and we'll do a count of the images before and after the scroll.
 
 ```javascript
 var GoogleSearch = (function() {
@@ -249,7 +236,7 @@ var GoogleSearch = (function() {
         setTimeout(function () {
             var secondCount = document.querySelectorAll('img').length;
             SwiftScraper.postMessage({'first': firstCount, 'second': secondCount});
-        }, 2000);        
+        }, 2000);
     }
 
     return {
@@ -313,7 +300,7 @@ let step3 = AsyncScriptStep(functionName: "scrollAndCountImages") { response, mo
 
             // Save the data to the model dictionary
             model["first"] = first
-            model["second"] = second            
+            model["second"] = second
         }
     }
     return .proceed
@@ -363,13 +350,33 @@ In this example, the iOS code will repeatedly call the JavaScript function `test
 let waitForConditionStep = WaitForConditionStep(
     assertionName: "testThatStuffIsReady",
     timeoutInSeconds: 2)
-```            
+```
+
+# List of Steps
+
+Here is the full list of steps discussed above:
+
+- `OpenPageStep` - Loads a page and optionally executes a JavaScript assertion function to see that the page loaded correctly
+- `PageChangeStep` - Calls a JavaScript function which is expected to navigate to a different page. Optionally executes a JavaScript assertion function to see that the new page loaded correctly
+- `ScriptStep` - Runs a JavaScript function and returns the return value
+- `AsyncScriptStep` - Runs an asynchronous JavaScript function and returns the return value
+- `ProcessStep` - Runs swift code, which allows you do execute actions outside the scraper or modify the control flow
+- `WaitStep` - Waits a fixed number of seconds
+- `WaitForConditionStep` - Repeatedly calls a JavaScript function till it returns true (or times out)
+
+# Examples
+
+If you want to read more example code:
+
+* [Swift code that performs a google text search](https://github.com/cweatureapps/SwiftScraper/blob/master/Example/SwiftScraperExample/TutorialViewController.swift)
+* [Swift code that performs a google image search, and scrolls to count all images](https://github.com/cweatureapps/SwiftScraper/blob/master/Example/SwiftScraperExample/AdvancedTutorialViewController.swift)
+* [The Javascript used in the above examples](https://github.com/cweatureapps/SwiftScraper/blob/master/Example/SwiftScraperExample/GoogleSearch.js)
 
 # FAQ
 
 ***I'm getting the error: "An SSL error has occurred and a secure connection to the server cannot be made."***
 
-App Transport Security (ATS) rules apply web views as well. If the website you are loading is not HTTPS, or uses outdated security protocols, then iOS will refuse to load it.
+App Transport Security (ATS) rules apply web views as well. If the website you are loading is not HTTPS, or uses outdated security protocols, macOS / iOS will refuse to load it.
 
 The quick workaround is to disable ATS by putting the following setting in your `Info.plist`
 
@@ -382,14 +389,3 @@ The quick workaround is to disable ATS by putting the following setting in your 
 ```
 
 However, at some point in the future, Apple may require that all apps submitted to the App Store support ATS.
-
-For more information, see the following links:
-
-* [https://forums.developer.apple.com/thread/6767](https://forums.developer.apple.com/thread/6767)
-* [https://developer.apple.com/news/?id=12212016b](https://developer.apple.com/news/?id=12212016b)
-* [https://developer.apple.com/videos/play/wwdc2016/706/](https://developer.apple.com/news/?id=12212016b)
-
-
-# License
-
-SwiftScraper is available under the MIT license. See the LICENSE file for more info.
