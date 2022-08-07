@@ -103,7 +103,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
         withError error: Error
     ) {
         print("didFailProvisionalNavigation")
-        let navigationError = SwiftScraperError.navigationFailed(error: error)
+        let navigationError = SwiftScraperError.navigationFailed(errorMessage: error.localizedDescription)
         callNavigationCompletion(result: .failure(navigationError))
     }
 
@@ -113,7 +113,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
         if nsError.domain == "NSURLErrorDomain" && nsError.code == NSURLErrorCancelled {
             return
         }
-        let navigationError = SwiftScraperError.navigationFailed(error: error)
+        let navigationError = SwiftScraperError.navigationFailed(errorMessage: error.localizedDescription)
         callNavigationCompletion(result: .failure(navigationError))
     }
 

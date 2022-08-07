@@ -17,8 +17,8 @@ final class SwiftScraperErrorTests: XCTestCase {
             "A JavaScript error occurred: message1"
         )
          XCTAssertEqual(
-            "\(SwiftScraperError.navigationFailed(error: SwiftScraperError.timeout).localizedDescription)",
-            "Something went wrong when navigating to the page"
+            "\(SwiftScraperError.navigationFailed(errorMessage: "message2").localizedDescription)",
+            "Something went wrong when navigating to the page: message2"
         )
          XCTAssertEqual(
             "\(SwiftScraperError.incorrectStep.localizedDescription)",

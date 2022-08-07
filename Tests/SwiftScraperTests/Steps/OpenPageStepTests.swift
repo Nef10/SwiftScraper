@@ -45,15 +45,7 @@ class OpenPageStepTests: StepRunnerCommonTests {
         waitForExpectations()
 
         XCTAssertEqual(stepRunnerStates, [.inProgress(index: 0), TestHelper.failureResult])
-        if case StepRunnerState.failure(let error as SwiftScraperError) = stepRunner.state {
-            if case SwiftScraperError.contentUnexpected = error {
-               // Pass
-            } else {
-                XCTFail("Expected that the step should fail with a contentUnexpected error")
-            }
-        } else {
-            XCTFail("Expected that the step should fail")
-        }
+        assertErrorState(stepRunner.state, is: .contentUnexpected)
     }
 
     func testOpenPageStepFailed() throws {
@@ -68,20 +60,8 @@ class OpenPageStepTests: StepRunnerCommonTests {
         waitForExpectations()
 
         XCTAssertEqual(stepRunnerStates, [.inProgress(index: 0), TestHelper.failureResult])
-        if case StepRunnerState.failure(let error as SwiftScraperError) = stepRunner.state {
-            XCTAssertEqual(error.errorDescription, "Something went wrong when navigating to the page")
-            if case SwiftScraperError.navigationFailed(let innerError as NSError) = error {
-                XCTAssertEqual(innerError.domain, "NSURLErrorDomain")
-                let codeMatches = innerError.code == NSURLErrorCannotFindHost ||
-                    innerError.code == NSURLErrorNotConnectedToInternet
-                XCTAssertTrue(codeMatches, "Error should be cannot find host, or internet connection error")
-
-            } else {
-                XCTFail("Expected that the step should fail with a navigationFailed error")
-            }
-        } else {
-            XCTFail("Expected that the step should fail")
-        }
+        assertErrorState(stepRunner.state,
+                         is: .navigationFailed(errorMessage: "A server with the specified hostname could not be found."))
     }
 
 }

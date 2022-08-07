@@ -148,15 +148,11 @@ class ScriptStepTests: StepRunnerCommonTests {
         waitForExpectations()
 
         XCTAssertEqual(stepRunnerStates, [.inProgress(index: 0), .inProgress(index: 1), TestHelper.failureResult])
-        if case .failure(let errorObject) = stepRunner.state, let error = errorObject as? SwiftScraperError {
-            if case .javascriptError(let errorMessage) = error {
-                XCTAssert(errorMessage.contains("TypeError: StepRunnerTests.foobarThisWillFail is not a function."))
-            } else {
-                XCTFail("error should javascriptError, but is \(error)")
-            }
-        } else {
-            XCTFail("state should be failure, but was \(stepRunner.state)")
-        }
+        assertErrorState(stepRunner.state,
+                         is: .javascriptError(errorMessage:
+        """
+        TypeError: StepRunnerTests.foobarThisWillFail is not a function. (In \'StepRunnerTests.foobarThisWillFail()\', \'StepRunnerTests.foobarThisWillFail\' is undefined)
+        """))
     }
 
     func testScriptStepFailEarly() throws {

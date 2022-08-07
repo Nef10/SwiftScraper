@@ -102,4 +102,13 @@ extension XCTestCase {
         XCTAssertEqual((model["obj"] as? JSON)?["foo"] as? String, "bar")
     }
 
+    func assertErrorState(_ state: StepRunnerState, is expectedError: SwiftScraperError) {
+         if case StepRunnerState.failure(error: let error as SwiftScraperError) = state {
+            if error != expectedError {
+                XCTFail("Expected failure state to have error \(expectedError), not \(error)")
+            }
+        } else {
+            XCTFail("Expected state to be failure, not \(state)")
+        }
+    }
 }
