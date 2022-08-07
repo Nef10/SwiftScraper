@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import os
 import WebKit
 
 // MARK: - Types
@@ -43,6 +44,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     // MARK: - Properties
 
     private let moduleName: String
+    private let logger = Logger()
     public private (set) var webView: WKWebView!
     private let userContentController = WKUserContentController()
     private var navigationCallback: NavigationCallback?
@@ -102,13 +104,13 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
         didFailProvisionalNavigation navigation: WKNavigation!,
         withError error: Error
     ) {
-        print("didFailProvisionalNavigation")
+        logger.warning("didFailProvisionalNavigation: \(error.localizedDescription)")
         let navigationError = SwiftScraperError.navigationFailed(errorMessage: error.localizedDescription)
         callNavigationCompletion(result: .failure(navigationError))
     }
 
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
-        print("didFailNavigation was called")
+        logger.warning("didFailNavigation: \(error.localizedDescription)")
         let nsError = error as NSError
         if nsError.domain == "NSURLErrorDomain" && nsError.code == NSURLErrorCancelled {
             return
@@ -134,9 +136,9 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage
     ) {
-        print("WKScriptMessage didReceiveMessage")
+        logger.debug("WKScriptMessage didReceiveMessage")
         guard message.name == Constants.messageHandlerName else {
-            print("Ignoring message with name of \(message.name)")
+            logger.info("Ignoring message with name of \(message.name)")
             return
         }
         asyncScriptCallback?(.success(message.body))
@@ -173,21 +175,20 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
             completion(.failure(SwiftScraperError.parameterSerialization))
             return
         }
-        print("script to run:", script)
+        logger.debug("script to run: \(script)")
         webView.evaluateJavaScript(script) { response, error in
             if let nsError = error as NSError?,
                 nsError.domain == WKError.errorDomain,
                 nsError.code == WKError.Code.javaScriptExceptionOccurred.rawValue {
                 let jsErrorMessage = nsError.userInfo["WKJavaScriptExceptionMessage"] as? String
                                         ?? nsError.localizedDescription
-                print("javaScriptExceptionOccurred error: \(jsErrorMessage)")
+                self.logger.warning("javaScriptExceptionOccurred error: \(jsErrorMessage)")
                 completion(.failure(SwiftScraperError.javascriptError(errorMessage: jsErrorMessage)))
             } else if let error = error {
-                print("javascript error: \(error.localizedDescription)")
+                self.logger.warning("javascript error: \(error.localizedDescription)")
                 completion(.failure(SwiftScraperError.javascriptError(errorMessage: error.localizedDescription)))
             } else {
-                print("javascript response:")
-                print(response ?? "(no response)")
+                self.logger.debug("javascript response: \(String(describing: response))")
                 completion(.success(response))
             }
         }
