@@ -369,7 +369,7 @@ class StepRunnerTests: XCTestCase { // swiftlint:disable:this type_body_length
             return .jumpToStep(4)
         }
         let stepRunner = try makeStepRunner(steps: [openPageOneStep, step2, doNotExecuteStep, doNotExecuteStep])
-        stepRunner.run() {
+        stepRunner.run {
             exp.fulfill()
         }
         waitForExpectations()
@@ -563,7 +563,7 @@ class StepRunnerTests: XCTestCase { // swiftlint:disable:this type_body_length
         }
 
         let stepRunner = try makeStepRunner(steps: [openPageOneStep, step2, doNotExecuteStep, doNotExecuteStep])
-        stepRunner.run() {
+        stepRunner.run {
             exp.fulfill()
         }
         waitForExpectations()
