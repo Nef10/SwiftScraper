@@ -82,15 +82,7 @@ class PageChangeStepTests: StepRunnerCommonTests {
         waitForExpectations()
 
         XCTAssertEqual(stepRunnerStates, [.inProgress(index: 0), .inProgress(index: 1), TestHelper.failureResult])
-        if case StepRunnerState.failure(let error as SwiftScraperError) = stepRunner.state {
-            if case SwiftScraperError.javascriptError(let errorMessage) = error {
-                XCTAssertEqual(errorMessage, "JavaScript exception thrown")
-            } else {
-                XCTFail("Expected that the step should fail with a javascriptError")
-            }
-        } else {
-            XCTFail("Expected that the step should fail")
-        }
+        assertErrorState(stepRunner.state, is: .javascriptError(errorMessage: "JavaScript exception thrown"))
     }
 
 }

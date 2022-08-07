@@ -119,15 +119,7 @@ class ProcessStepTests: StepRunnerCommonTests {
 
         XCTAssertEqual(stepRunnerStates, [.inProgress(index: 0), .inProgress(index: 1), TestHelper.failureResult])
         XCTAssertEqual(stepRunner.model["step2"] as? Int, 123)
-        if case StepRunnerState.failure(let error as SwiftScraperError) = stepRunner.state {
-            if case SwiftScraperError.incorrectStep = error {
-               // Pass
-            } else {
-                XCTFail("Expected that the step should fail with a incorrectStep error")
-            }
-        } else {
-            XCTFail("Expected that the step should fail")
-        }
+        assertErrorState(stepRunner.state, is: .incorrectStep)
     }
 
     func testProcessStepSkipStepToLoop() throws {

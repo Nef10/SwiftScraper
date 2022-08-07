@@ -8,7 +8,7 @@
 
 import Foundation
 
-public enum SwiftScraperError: Error, LocalizedError {
+public enum SwiftScraperError: Error, LocalizedError, Equatable {
 
     /// Problem with serializing parameters to pass to the JavaScript.
     case parameterSerialization
@@ -20,7 +20,7 @@ public enum SwiftScraperError: Error, LocalizedError {
     case javascriptError(errorMessage: String)
 
     /// Page navigation failed with the given error.
-    case navigationFailed(error: Error)
+    case navigationFailed(errorMessage: String)
 
     /// The step which was specified could not be found to be run, e.g. if an incorrect index was specified for
     /// `StepFlowResult.jumpToStep(Int)`.
@@ -43,8 +43,8 @@ public enum SwiftScraperError: Error, LocalizedError {
             return "Something went wrong, the page contents was not what was expected"
         case .javascriptError(let errorMessage):
             return "A JavaScript error occurred: \(errorMessage)"
-        case .navigationFailed:
-            return "Something went wrong when navigating to the page"
+        case .navigationFailed(let errorMessage):
+            return "Something went wrong when navigating to the page: \(errorMessage)"
         case .incorrectStep:
             return "An incorrect step was specified"
         case .timeout:

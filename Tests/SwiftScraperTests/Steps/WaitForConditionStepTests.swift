@@ -41,16 +41,7 @@ class WaitForConditionStepTests: StepRunnerCommonTests {
         waitForExpectations()
 
         XCTAssertEqual(stepRunnerStates, [.inProgress(index: 0), .inProgress(index: 1), TestHelper.failureResult])
-        if case StepRunnerState.failure(error: let error) = stepRunner.state {
-            switch error {
-            case SwiftScraperError.timeout:
-                break  // Pass
-            default:
-                XCTFail("Expected state to be failed with timeout")
-            }
-        } else {
-            XCTFail("Expected state to be failed with timeout")
-        }
+        assertErrorState(stepRunner.state, is: .timeout)
     }
 
     func testWaitForConditionStepAssertionFailure() throws {
@@ -68,16 +59,11 @@ class WaitForConditionStepTests: StepRunnerCommonTests {
         waitForExpectations()
 
         XCTAssertEqual(stepRunnerStates, [.inProgress(index: 0), .inProgress(index: 1), TestHelper.failureResult])
-        if case StepRunnerState.failure(error: let error) = stepRunner.state {
-            switch error {
-            case SwiftScraperError.javascriptError:
-                break // Pass
-            default:
-                XCTFail("Expected state to be failed with javascriptError")
-            }
-        } else {
-            XCTFail("Expected state to be failed with javascriptError")
-        }
+        assertErrorState(stepRunner.state,
+                         is: .javascriptError(errorMessage:
+        """
+        TypeError: StepRunnerTests.foobarThisWillFail is not a function. (In \'StepRunnerTests.foobarThisWillFail()\', \'StepRunnerTests.foobarThisWillFail\' is undefined)
+        """))
     }
 
     func testWaitForConditionStepModelPassing() throws {
