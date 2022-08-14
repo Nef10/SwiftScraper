@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>  Reference</title>
+    <link rel="stylesheet" type="text/css" href="css/jazzy.css" />
+    <link rel="stylesheet" type="text/css" href="css/highlight.css" />
+    <meta charset='utf-8'>
+    <script src="js/jquery.min.js" defer></script>
+    <script src="js/jazzy.js" defer></script>
+    
+    <script src="js/lunr.min.js" defer></script>
+    <script src="js/typeahead.jquery.js" defer></script>
+    <script src="js/jazzy.search.js" defer></script>
+  </head>
+  <body>
+    <a title="  Reference"></a>
+    <header>
+      <div class="content-wrapper">
+        <p><a href="index.html"> Docs</a> (91% documented)</p>
+        <div class="header-right">
+          <form role="search" action="search.json">
+            <input type="text" placeholder="Search documentation" data-typeahead>
+          </form>
+        </div>
+      </div>
+    </header>
+    <div class="content-wrapper">
+      <p id="breadcrumbs">
+        <a href="index.html"> Reference</a>
+        <img id="carat" src="img/carat.png" alt=""/>
+          Reference
+      </p>
+    </div>
+    <div class="content-wrapper">
+      <nav class="sidebar">
+        <ul class="nav-groups">
+          <li class="nav-group-name">
+            <a href="Classes.html">Classes</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/AsyncScriptStep.html">AsyncScriptStep</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/Browser.html">Browser</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/OpenPageStep.html">OpenPageStep</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/PageChangeStep.html">PageChangeStep</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ProcessStep.html">ProcessStep</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/ScriptStep.html">ScriptStep</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/StepRunner.html">StepRunner</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/WaitForConditionStep.html">WaitForConditionStep</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Classes/WaitStep.html">WaitStep</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Enums.html">Enumerations</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Enums/StepCompletionResult.html">StepCompletionResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/StepFlowResult.html">StepFlowResult</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/StepRunnerState.html">StepRunnerState</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Enums/SwiftScraperError.html">SwiftScraperError</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Functions.html">Functions</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:12SwiftScraper2neoiySbAA15StepRunnerStateO_ADtF">!=(_:_:)</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Functions.html#/s:12SwiftScraper2eeoiySbAA15StepRunnerStateO_ADtF">==(_:_:)</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Protocols.html">Protocols</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Protocols/Step.html">Step</a>
+              </li>
+            </ul>
+          </li>
+          <li class="nav-group-name">
+            <a href="Typealiases.html">Type Aliases</a>
+            <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12SwiftScraper4JSONa">JSON</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/PlatformView">PlatformView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12SwiftScraper12PlatformViewa">PlatformView</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12SwiftScraper18ProcessStepHandlera">ProcessStepHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12SwiftScraper17ScriptStepHandlera">ScriptStepHandler</a>
+              </li>
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12SwiftScraper22StepCompletionCallbacka">StepCompletionCallback</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <article class="main-content">
+        <section>
+          <section class="section">
+            
+            <h1 id='swiftscraper' class='heading'>SwiftScraper</h1>
+
+<p><a href="https://github.com/Nef10/SwiftScraper/actions?query=workflow%3A%22CI%22"><img src="https://github.com/Nef10/SwiftScraper/workflows/CI/badge.svg?event=push" alt="CI Status"></a> <a href="https://nef10.github.io/SwiftScraper/"><img src="https://nef10.github.io/SwiftScraper/badge.svg" alt="Documentation percentage"></a> <a href="https://github.com/Nef10/SwiftScraper/blob/main/LICENSE"><img src="https://img.shields.io/github/license/Nef10/SwiftScraper" alt="License: MIT"></a> <a href="https://github.com/Nef10/SwiftScraper/releases"><img src="https://img.shields.io/github/v/release/Nef10/SwiftScraper?label=SemVer&sort=semver" alt="Latest version"></a> <img src="https://img.shields.io/badge/platform-macOS%20%7C%20iOS-blue" alt="platforms supported: macOS | iOS"> <img src="https://img.shields.io/badge/SPM-compatible-blue" alt="SPM compatible"></p>
+
+<p>Web scraping library for Swift. This is a fork of <a href="https://github.com/cweatureapps/SwiftScraper">cweatureapps/SwiftScraper</a>, to offer the library as swift package.</p>
+<h1 id='overview' class='heading'>Overview</h1>
+
+<p>This framework provides a simple way to declaratively define a series of steps in Swift that represent how to scrape a web site, allowing the app to read this web page data.</p>
+<h1 id='features' class='heading'>Features</h1>
+
+<ul>
+<li>Declarative API - clearly define the steps to run and avoid the spaghetti 🍝 code that comes with using the WebView and the delegate pattern</li>
+<li>Custom JavaScript integration -  Simple integration with custom JavaScript to perform complicated scraping, using the language of the web to process the web page</li>
+<li>Perform custom processing at each step</li>
+<li>Passing data between steps</li>
+<li>Control flow to determine which step to run next, allowing basic conditionals and loops</li>
+</ul>
+<h1 id='tutorial' class='heading'>Tutorial</h1>
+
+<p>In this tutorial, we&rsquo;ll cover the basic usage of this framework by performing a Google search.</p>
+<h2 id='add-package-via-swift-package-manager' class='heading'>Add package via Swift Package Manager</h2>
+
+<p>Add this dependency to your <code>Package.swift</code> file:</p>
+<pre class="highlight swift"><code><span class="o">.</span><span class="nf">package</span><span class="p">(</span><span class="nv">url</span><span class="p">:</span> <span class="s">"https://github.com/Nef10/SwiftScraper.git"</span><span class="p">,</span> <span class="o">.</span><span class="nf">exact</span><span class="p">(</span><span class="s">"X.Y.Z"</span><span class="p">)),</span>
+</code></pre>
+
+<p><em>Note: as per semantic versioning all versions changes &lt; 1.0.0 can be breaking, so please use <code>.exact</code> for now</em></p>
+<h2 id='javascript-setup' class='heading'>JavaScript setup</h2>
+
+<p>By convention, all the steps will use the functions exposed in a single module which is defined in a single JavaScript file.</p>
+
+<p>For this exercise, create a new file called <code>GoogleSearch.js</code>.</p>
+
+<p>Start by creating the blank JavaScript module structure, making sure the module name is the same as the file name:</p>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">GoogleSearch</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">{</span>
+    <span class="p">};</span>
+<span class="p">})()</span>
+</code></pre>
+<h2 id='loading-a-web-page' class='heading'>Loading a web page</h2>
+
+<p>Create a new view controller.</p>
+
+<p>Import the framework:</p>
+<pre class="highlight swift"><code><span class="kd">import</span> <span class="kt">SwiftScraper</span>
+</code></pre>
+
+<p>In the view controller, we&rsquo;ll create a step and run it:</p>
+<pre class="highlight swift"><code><span class="k">var</span> <span class="nv">stepRunner</span><span class="p">:</span> <span class="kt">StepRunner</span><span class="o">!</span>
+
+<span class="k">override</span> <span class="kd">func</span> <span class="nf">viewDidLoad</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">super</span><span class="o">.</span><span class="nf">viewDidLoad</span><span class="p">()</span>
+    <span class="k">let</span> <span class="nv">step1</span> <span class="o">=</span> <span class="kt">OpenPageStep</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="s">"https://www.google.com"</span><span class="p">)</span>
+    <span class="n">stepRunner</span> <span class="o">=</span> <span class="kt">StepRunner</span><span class="p">(</span><span class="nv">moduleName</span><span class="p">:</span> <span class="s">"GoogleSearch"</span><span class="p">,</span> <span class="nv">steps</span><span class="p">:</span> <span class="p">[</span><span class="n">step1</span><span class="p">])</span>
+    <span class="n">stepRunner</span><span class="o">.</span><span class="nf">insertWebViewIntoView</span><span class="p">(</span><span class="nv">parent</span><span class="p">:</span> <span class="n">view</span><span class="p">)</span>
+    <span class="n">stepRunner</span><span class="o">.</span><span class="nf">run</span><span class="p">()</span>
+<span class="p">}</span>
+
+</code></pre>
+
+<p>When you run this, you will see a web view opening the Google home page.</p>
+
+<blockquote>
+<p>The web view typically needs to be have a visible frame size, because web sites often use responsive breakpoints and will even sometimes change the HTML structure based on the dimensions of the page.</p>
+
+<p>The <code>insertWebViewIntoView</code> method helps you to easily insert the web view into any <code>NSView</code> / <code>UIView</code> that you have, while automatically constraining it to the same size. It is up to you to set up the dimensions of the parent view, or you can even hide it where the user cannot see it.</p>
+</blockquote>
+<h2 id='check-that-the-page-loaded' class='heading'>Check that the page loaded</h2>
+
+<p>We can add an assertion to run some JavaScript code when the page loads, to make sure the page that loaded is expected. We can do this by referencing a JavaScript function which is exposed by the module.</p>
+
+<p>In the <code>GoogleSearch.js</code> file, add the following function which will just check the title of the page is correct.</p>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">GoogleSearch</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="kd">function</span> <span class="nx">assertGoogleTitle</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">==</span> <span class="s2">"Google"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">assertGoogleTitle</span><span class="p">:</span> <span class="nx">assertGoogleTitle</span>
+    <span class="p">};</span>
+<span class="p">})()</span>
+</code></pre>
+
+<p>In the view controller where you created the step, include the name of the assertion function:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">step1</span> <span class="o">=</span> <span class="kt">OpenPageStep</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="s">"https://www.google.com"</span><span class="p">,</span> <span class="nv">assertionName</span><span class="p">:</span> <span class="s">"assertGoogleTitle"</span><span class="p">)</span>
+</code></pre>
+
+<blockquote>
+<p>The assertion function runs immediately when the page loads.
+Sometimes, what you are asserting may not be ready at the point when the page loads,
+as the website may modify the page asynchronously after loading.
+In this case check out the advanced usage to add a step which waits till the page is loaded.</p>
+</blockquote>
+<h2 id='observe-progress-of-the-run' class='heading'>Observe progress of the run</h2>
+
+<p>You can observe the progress of the execution by adding a <code>stateObserver</code> to the stepRunner.</p>
+<pre class="highlight swift"><code>    <span class="n">stepRunner</span><span class="o">.</span><span class="n">stateObservers</span><span class="o">.</span><span class="n">append</span> <span class="p">{</span> <span class="n">newValue</span> <span class="k">in</span>
+        <span class="nf">print</span><span class="p">(</span><span class="s">"-----"</span><span class="p">,</span> <span class="n">newValue</span><span class="p">,</span> <span class="s">"-----"</span><span class="p">)</span>
+        <span class="k">switch</span> <span class="n">newValue</span> <span class="p">{</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nf">inProgress</span><span class="p">(</span><span class="k">let</span> <span class="nv">index</span><span class="p">):</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"About to run step at index"</span><span class="p">,</span> <span class="n">index</span><span class="p">)</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nf">failure</span><span class="p">(</span><span class="k">let</span> <span class="nv">error</span><span class="p">):</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Failed: </span><span class="se">\(</span><span class="n">error</span><span class="o">.</span><span class="n">localizedDescription</span><span class="se">)</span><span class="s">"</span><span class="p">)</span>
+        <span class="k">case</span> <span class="o">.</span><span class="nv">success</span><span class="p">:</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"Finished successfully"</span><span class="p">)</span>
+        <span class="k">default</span><span class="p">:</span>
+            <span class="k">break</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">stepRunner</span><span class="o">.</span><span class="nf">run</span><span class="p">()</span>
+</code></pre>
+<h2 id='run-script-that-loads-page' class='heading'>Run script that loads page</h2>
+
+<p>Let&rsquo;s now run some custom JavaScript to submit a Google search. This is the <code><a href="Classes/PageChangeStep.html">PageChangeStep</a></code> which runs some JavaScript, which will result in a new page being loaded. When the page is loaded, it will proceed to the next step.</p>
+
+<p>Firstly, in the <code>GoogleSearch.js</code> file, add the following 2 functions which perform the search, and exposes them in the module:</p>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">GoogleSearch</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="kd">function</span> <span class="nx">performSearch</span><span class="p">(</span><span class="nx">searchText</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'input[type="text"], input[type="Search"]'</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">searchText</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">forms</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">submit</span><span class="p">();</span>
+    <span class="p">}</span>
+    <span class="kd">function</span> <span class="nx">assertSearchResultTitle</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">==</span> <span class="s2">"SwiftScraper iOS - Google Search"</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">assertGoogleTitle</span><span class="p">:</span> <span class="nx">assertGoogleTitle</span><span class="p">,</span>
+        <span class="na">performSearch</span><span class="p">:</span> <span class="nx">performSearch</span><span class="p">,</span>
+        <span class="na">assertSearchResultTitle</span><span class="p">:</span> <span class="nx">assertSearchResultTitle</span>
+    <span class="p">};</span>
+<span class="p">})()</span>
+</code></pre>
+
+<p>In the view controller, add step 2 which is the <code><a href="Classes/PageChangeStep.html">PageChangeStep</a></code>, referencing the JavaScript functions you just implemented:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">step2</span> <span class="o">=</span> <span class="kt">PageChangeStep</span><span class="p">(</span><span class="nv">functionName</span><span class="p">:</span> <span class="s">"performSearch"</span><span class="p">,</span> <span class="nv">params</span><span class="p">:</span> <span class="s">"SwiftScraper iOS"</span><span class="p">,</span> <span class="nv">assertionName</span><span class="p">:</span> <span class="s">"assertSearchResultTitle"</span><span class="p">)</span>
+</code></pre>
+
+<p>Notice the <code>params</code> parameter in the initializer, which allows you to pass data to the JavaScript function.</p>
+
+<p>Make sure to include this in the array of steps when you create the <code><a href="Classes/StepRunner.html">StepRunner</a></code>:</p>
+<pre class="highlight swift"><code><span class="n">stepRunner</span> <span class="o">=</span> <span class="kt">StepRunner</span><span class="p">(</span><span class="nv">moduleName</span><span class="p">:</span> <span class="s">"GoogleSearch"</span><span class="p">,</span> <span class="nv">steps</span><span class="p">:</span> <span class="p">[</span><span class="n">step1</span><span class="p">,</span> <span class="n">step2</span><span class="p">])</span>
+</code></pre>
+<h2 id='run-script-and-process' class='heading'>Run script and process</h2>
+
+<p>We&rsquo;re at the last step - we can run a script to scrape the contents of the page. Add the following JavaScript function which will get the search results, and return an Array of JSON objects with the text and href of each link.</p>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">GoogleSearch</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="kd">function</span> <span class="nx">getSearchResults</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">headings</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'h3.r'</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">headings</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">h3</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="p">{</span> <span class="s1">'text'</span><span class="p">:</span> <span class="nx">h3</span><span class="p">.</span><span class="nx">innerText</span><span class="p">,</span> <span class="s1">'href'</span><span class="p">:</span> <span class="nx">h3</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">href</span> <span class="p">};</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">assertGoogleTitle</span><span class="p">:</span> <span class="nx">assertGoogleTitle</span><span class="p">,</span>
+        <span class="na">performSearch</span><span class="p">:</span> <span class="nx">performSearch</span><span class="p">,</span>
+        <span class="na">assertSearchResultTitle</span><span class="p">:</span> <span class="nx">assertSearchResultTitle</span><span class="p">,</span>
+        <span class="na">getSearchResults</span><span class="p">:</span> <span class="nx">getSearchResults</span>
+    <span class="p">};</span>
+<span class="p">})()</span>
+</code></pre>
+
+<p>In the Swift code, add the 3rd step which is a <code><a href="Classes/ScriptStep.html">ScriptStep</a></code>, a step which runs a JavaScript function and returns the response that the function returns.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">step3</span> <span class="o">=</span> <span class="kt">ScriptStep</span><span class="p">(</span><span class="nv">functionName</span><span class="p">:</span> <span class="s">"getSearchResults"</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">responseArray</span> <span class="o">=</span> <span class="n">response</span> <span class="k">as?</span> <span class="p">[</span><span class="kt">JSON</span><span class="p">]</span> <span class="p">{</span>
+        <span class="n">responseArray</span><span class="o">.</span><span class="n">forEach</span> <span class="p">{</span> <span class="n">json</span> <span class="k">in</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">text</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"text"</span><span class="p">],</span> <span class="k">let</span> <span class="nv">href</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"href"</span><span class="p">]</span> <span class="p">{</span>
+                <span class="nf">print</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="s">"("</span><span class="p">,</span> <span class="n">href</span><span class="p">,</span> <span class="s">")"</span><span class="p">)</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">.</span><span class="n">proceed</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>And make sure to include this in the array of steps when you create the <code><a href="Classes/StepRunner.html">StepRunner</a></code>:</p>
+<pre class="highlight swift"><code><span class="n">stepRunner</span> <span class="o">=</span> <span class="kt">StepRunner</span><span class="p">(</span><span class="nv">moduleName</span><span class="p">:</span> <span class="s">"GoogleSearch"</span><span class="p">,</span> <span class="nv">steps</span><span class="p">:</span> <span class="p">[</span><span class="n">step1</span><span class="p">,</span> <span class="n">step2</span><span class="p">,</span> <span class="n">step3</span><span class="p">])</span>
+</code></pre>
+
+<p>Run this. You should see the steps complete successfully, and print the search results to the console.</p>
+
+<p>Congratulations!  You&rsquo;ve finished the tutorial on the basic usage of this library! 🎉</p>
+<h1 id='advanced-usage' class='heading'>Advanced Usage</h1>
+<h2 id='run-script-that-returns-data-async' class='heading'>Run script that returns data async</h2>
+
+<p>It is possible to run some JavaScript that does not return immediately, and wait for it to asynchronously call back the Swift code after some time has passed. For example, you may need to do something on the web page, poll for the operation to complete, and then pass the data back to Swift.</p>
+
+<p>To pass data back to Swift world, call <code>SwiftScraper.postMessage()</code>, passing a single object that can be serialized back to a Swift object.</p>
+
+<p>In this example, we&rsquo;ll do a Google image search, and then scroll down to the bottom. The infinite scroll pattern employed here will load more images when we do this, and we&rsquo;ll do a count of the images before and after the scroll.</p>
+<pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">GoogleSearch</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+
+    <span class="c1">// ...</span>
+
+    <span class="kd">function</span> <span class="nx">scrollAndCountImages</span><span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">firstCount</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'img'</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+        <span class="nb">window</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">);</span>
+        <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">secondCount</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'img'</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+            <span class="nx">SwiftScraper</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="s1">'first'</span><span class="p">:</span> <span class="nx">firstCount</span><span class="p">,</span> <span class="s1">'second'</span><span class="p">:</span> <span class="nx">secondCount</span><span class="p">});</span>
+        <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="na">assertGoogleTitle</span><span class="p">:</span> <span class="nx">assertGoogleTitle</span><span class="p">,</span>
+        <span class="na">performSearch</span><span class="p">:</span> <span class="nx">performSearch</span><span class="p">,</span>
+        <span class="na">assertSearchResultTitle</span><span class="p">:</span> <span class="nx">assertSearchResultTitle</span><span class="p">,</span>
+        <span class="na">getSearchResults</span><span class="p">:</span> <span class="nx">getSearchResults</span><span class="p">,</span>
+        <span class="na">scrollAndCountImages</span><span class="p">:</span> <span class="nx">scrollAndCountImages</span>
+    <span class="p">};</span>
+<span class="p">})()</span>
+</code></pre>
+
+<blockquote>
+<p>For those familiar with <code>WKWebView</code>, the <code>SwiftScraper.postMessage()</code> function is just an alias for
+<code>webkit.messageHandlers.swiftScraperResponseHandler.postMessage()</code></p>
+</blockquote>
+
+<p>In Swift, use the <code><a href="Classes/AsyncScriptStep.html">AsyncScriptStep</a></code>, which is used in the same way as <code><a href="Classes/ScriptStep.html">ScriptStep</a></code>, with the difference being the handler is not called until <code>SwiftScraper.postMessage</code> is called. It is expected that the JavaScript function itself does not return anything.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">step1</span> <span class="o">=</span> <span class="kt">OpenPageStep</span><span class="p">(</span><span class="nv">path</span><span class="p">:</span> <span class="s">"https://www.google.com.au/search?tbm=isch"</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">step2</span> <span class="o">=</span> <span class="kt">PageChangeStep</span><span class="p">(</span>
+    <span class="nv">functionName</span><span class="p">:</span> <span class="s">"performSearch"</span><span class="p">,</span>
+    <span class="nv">params</span><span class="p">:</span> <span class="s">"ankylosaurus"</span><span class="p">)</span>
+
+<span class="k">let</span> <span class="nv">step3</span> <span class="o">=</span> <span class="kt">AsyncScriptStep</span><span class="p">(</span><span class="nv">functionName</span><span class="p">:</span> <span class="s">"scrollAndCountImages"</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span><span class="p">,</span> <span class="n">_</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">json</span> <span class="o">=</span> <span class="n">response</span> <span class="k">as?</span> <span class="kt">JSON</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">first</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"first"</span><span class="p">],</span> <span class="k">let</span> <span class="nv">second</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"second"</span><span class="p">]</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"first: "</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="s">"second: "</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">.</span><span class="n">proceed</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='process-step' class='heading'>Process Step</h2>
+
+<p>Use the <code><a href="Classes/ProcessStep.html">ProcessStep</a></code> when you need a step that requires some custom action to be performed.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">processStep</span> <span class="o">=</span> <span class="kt">ProcessStep</span> <span class="p">{</span> <span class="n">model</span> <span class="k">in</span>
+    <span class="c1">// perform some custom action here</span>
+    <span class="k">return</span> <span class="o">.</span><span class="n">proceed</span>
+<span class="p">}</span>
+</code></pre>
+
+<p>Two main concepts to note here are:</p>
+
+<ul>
+<li>The <code>model</code> parameter, used for passing model data between steps</li>
+<li>The return value, which can be used for control flow</li>
+</ul>
+
+<p>These concepts apply to the <code><a href="Classes/ProcessStep.html">ProcessStep</a></code>, <code><a href="Classes/ScriptStep.html">ScriptStep</a></code> and <code><a href="Classes/AsyncScriptStep.html">AsyncScriptStep</a></code>. We&rsquo;ll explore them in the next two sections.</p>
+<h2 id='passing-model-data' class='heading'>Passing model data</h2>
+
+<p>The <code><a href="Classes/ProcessStep.html">ProcessStep</a></code>, <code><a href="Classes/ScriptStep.html">ScriptStep</a></code> and <code><a href="Classes/AsyncScriptStep.html">AsyncScriptStep</a></code> all have a handler closure to perform processing, and these handlers all have a model parameter of type <code>inout JSON</code>. Modify this JSON dictionary to save data during one step, and then read it in another step.</p>
+
+<p>Let&rsquo;s modify the <code><a href="Classes/AsyncScriptStep.html">AsyncScriptStep</a></code> from the previous section to save the before and after counts to the dictionary.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">step3</span> <span class="o">=</span> <span class="kt">AsyncScriptStep</span><span class="p">(</span><span class="nv">functionName</span><span class="p">:</span> <span class="s">"scrollAndCountImages"</span><span class="p">)</span> <span class="p">{</span> <span class="n">response</span><span class="p">,</span> <span class="n">model</span> <span class="k">in</span>  <span class="c1">// notice the model param</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">json</span> <span class="o">=</span> <span class="n">response</span> <span class="k">as?</span> <span class="kt">JSON</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="k">let</span> <span class="nv">first</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"first"</span><span class="p">],</span> <span class="k">let</span> <span class="nv">second</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="s">"second"</span><span class="p">]</span> <span class="p">{</span>
+            <span class="nf">print</span><span class="p">(</span><span class="s">"first: "</span><span class="p">,</span> <span class="n">first</span><span class="p">,</span> <span class="s">"second: "</span><span class="p">,</span> <span class="n">second</span><span class="p">)</span>
+
+            <span class="c1">// Save the data to the model dictionary</span>
+            <span class="n">model</span><span class="p">[</span><span class="s">"first"</span><span class="p">]</span> <span class="o">=</span> <span class="n">first</span>
+            <span class="n">model</span><span class="p">[</span><span class="s">"second"</span><span class="p">]</span> <span class="o">=</span> <span class="n">second</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="o">.</span><span class="n">proceed</span>
+<span class="p">}</span>
+</code></pre>
+<h2 id='control-flow' class='heading'>Control Flow</h2>
+
+<p>The return value is an enum which can be used for rudimentary control flow. We&rsquo;ve seen <code>.proceed</code> which means to go to the next step. The <code>.jumpToStep(n)</code> allows you to jump to another step, either before or after the current step. This allows you to define loops (by jumping back) as well as conditionals (by jumping forward).</p>
+
+<p>Let&rsquo;s continue the infinite scrolling image search example, and add a <code><a href="Classes/ProcessStep.html">ProcessStep</a></code> that will keep looping back to <code>step3</code> until the before count and after count are the same, meaning there are no more images on the page to load.</p>
+
+<p>Add this step as the last step to run. When you run this, you should see the screen keep scrolling down until no more images can be found.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">conditionStep</span> <span class="o">=</span> <span class="kt">ProcessStep</span> <span class="p">{</span> <span class="n">model</span> <span class="k">in</span>
+    <span class="k">if</span> <span class="k">let</span> <span class="nv">first</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s">"first"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">Int</span><span class="p">,</span>
+        <span class="k">let</span> <span class="nv">second</span> <span class="o">=</span> <span class="n">model</span><span class="p">[</span><span class="s">"second"</span><span class="p">]</span> <span class="k">as?</span> <span class="kt">Int</span><span class="p">,</span>
+        <span class="n">first</span> <span class="o">==</span> <span class="n">second</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">.</span><span class="n">proceed</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="o">.</span><span class="nf">jumpToStep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1">// This is a zero-based index, i.e. step3</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre>
+
+<blockquote>
+<p>This technique is most useful for repeating a sequence of steps.
+While it can also be used to model IF-THEN style conditionals, it is essentially a <code>GOTO</code> construct
+and can easily lead to unmaintainable spaghetti 🍝 steps.</p>
+</blockquote>
+
+<p>You can also have an early exit from the steps. The return value of <code>.finish</code> will stop execution as a success, while <code>.failure(Error)</code> will stop execution with a failure.</p>
+<h2 id='wait-step' class='heading'>Wait Step</h2>
+
+<p>A step that waits for a set period of time.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">waitStep</span> <span class="o">=</span> <span class="kt">WaitStep</span><span class="p">(</span><span class="nv">waitTimeInSeconds</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">)</span>
+</code></pre>
+<h2 id='wait-for-condition-step' class='heading'>Wait for Condition Step</h2>
+
+<p>This is a step that waits for a condition to become true before proceeding, or it will fail if the condition is still false when the timeout occurs.</p>
+
+<p>In this example, the iOS code will repeatedly call the JavaScript function <code>testThatStuffIsReady</code>, proceeding as soon as it returns true, or failing with a timeout if it doesn&rsquo;t return true within 2 seconds.</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">waitForConditionStep</span> <span class="o">=</span> <span class="kt">WaitForConditionStep</span><span class="p">(</span>
+    <span class="nv">assertionName</span><span class="p">:</span> <span class="s">"testThatStuffIsReady"</span><span class="p">,</span>
+    <span class="nv">timeoutInSeconds</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
+</code></pre>
+<h1 id='list-of-steps' class='heading'>List of Steps</h1>
+
+<p>Here is the full list of steps discussed above:</p>
+
+<ul>
+<li><code><a href="Classes/OpenPageStep.html">OpenPageStep</a></code> - Loads a page and optionally executes a JavaScript assertion function to see that the page loaded correctly</li>
+<li><code><a href="Classes/PageChangeStep.html">PageChangeStep</a></code> - Calls a JavaScript function which is expected to navigate to a different page. Optionally executes a JavaScript assertion function to see that the new page loaded correctly</li>
+<li><code><a href="Classes/ScriptStep.html">ScriptStep</a></code> - Runs a JavaScript function and returns the return value</li>
+<li><code><a href="Classes/AsyncScriptStep.html">AsyncScriptStep</a></code> - Runs an asynchronous JavaScript function and returns the return value</li>
+<li><code><a href="Classes/ProcessStep.html">ProcessStep</a></code> - Runs swift code, which allows you do execute actions outside the scraper or modify the control flow</li>
+<li><code><a href="Classes/WaitStep.html">WaitStep</a></code> - Waits a fixed number of seconds</li>
+<li><code><a href="Classes/WaitForConditionStep.html">WaitForConditionStep</a></code> - Repeatedly calls a JavaScript function till it returns true (or times out)</li>
+</ul>
+<h1 id='examples' class='heading'>Examples</h1>
+
+<p>If you want to read more example code:</p>
+
+<ul>
+<li><a href="https://github.com/cweatureapps/SwiftScraper/blob/master/Example/SwiftScraperExample/TutorialViewController.swift">Swift code that performs a google text search</a></li>
+<li><a href="https://github.com/cweatureapps/SwiftScraper/blob/master/Example/SwiftScraperExample/AdvancedTutorialViewController.swift">Swift code that performs a google image search, and scrolls to count all images</a></li>
+<li><a href="https://github.com/cweatureapps/SwiftScraper/blob/master/Example/SwiftScraperExample/GoogleSearch.js">The Javascript used in the above examples</a></li>
+</ul>
+<h1 id='faq' class='heading'>FAQ</h1>
+
+<p><strong><em>I&rsquo;m getting the error: &ldquo;An SSL error has occurred and a secure connection to the server cannot be made.&rdquo;</em></strong></p>
+
+<p>App Transport Security (ATS) rules apply web views as well. If the website you are loading is not HTTPS, or uses outdated security protocols, macOS / iOS will refuse to load it.</p>
+
+<p>The quick workaround is to disable ATS by putting the following setting in your <code>Info.plist</code></p>
+<pre class="highlight plaintext"><code>&lt;key&gt;NSAppTransportSecurity&lt;/key&gt;
+&lt;dict&gt;
+    &lt;key&gt;NSAllowsArbitraryLoads&lt;/key&gt;
+    &lt;true/&gt;
+&lt;/dict&gt;
+</code></pre>
+
+<p>However, at some point in the future, Apple may require that all apps submitted to the App Store support ATS.</p>
+
+          </section>
+        </section>
+        <section id="footer">
+          <p>&copy; 2022 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2022-08-14)</p>
+          <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+        </section>
+      </article>
+    </div>
+  </body>
+</html>
