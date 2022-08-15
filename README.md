@@ -287,6 +287,15 @@ Two main concepts to note here are:
 
 These concepts apply to the `ProcessStep`, `ScriptStep` and `AsyncScriptStep`. We'll explore them in the next two sections.
 
+If you need to execute a asynchronous actions, use the `AsyncProcessStep` instead:
+
+```swift
+let processStep = AsyncProcessStep { model, completion in
+    // perform some custom action here
+    completion(model, .proceed)
+}
+```
+
 ## Passing model data
 The `ProcessStep`, `ScriptStep` and `AsyncScriptStep` all have a handler closure to perform processing, and these handlers all have a model parameter of type `inout JSON`. Modify this JSON dictionary to save data during one step, and then read it in another step.
 
@@ -360,7 +369,8 @@ Here is the full list of steps discussed above:
 - `PageChangeStep` - Calls a JavaScript function which is expected to navigate to a different page. Optionally executes a JavaScript assertion function to see that the new page loaded correctly
 - `ScriptStep` - Runs a JavaScript function and returns the return value
 - `AsyncScriptStep` - Runs an asynchronous JavaScript function and returns the return value
-- `ProcessStep` - Runs swift code, which allows you do execute actions outside the scraper or modify the control flow
+- `ProcessStep` - Runs swift code, which allows you to execute actions outside the scraper or modify the control flow
+- `AsyncProcessStep` - Runs swift code, which allows you to execute asynchronous actions outside the scraper or modify the control flow
 - `WaitStep` - Waits a fixed number of seconds
 - `WaitForConditionStep` - Repeatedly calls a JavaScript function till it returns true (or times out)
 
