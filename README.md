@@ -361,6 +361,10 @@ let waitForConditionStep = WaitForConditionStep(
     timeoutInSeconds: 2)
 ```
 
+## Using parameter from the model
+
+For the steps accepting `params`, you can alternatively use `paramsKeys` and pass in an array of keys for the model. The JavaScript function will then receive parameters corresponding to the current value of this key in the model dictionary. You can use this if the value of your parameters is not yet known when you create the step. For example, use a `AsyncProcessStep` to ask your user for a value and then save it in the model.
+
 # List of Steps
 
 Here is the full list of steps discussed above:
