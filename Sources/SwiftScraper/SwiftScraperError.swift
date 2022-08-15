@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Errors which can occurr during scraping
 public enum SwiftScraperError: Error, LocalizedError, Equatable {
 
     /// Problem with serializing parameters to pass to the JavaScript.

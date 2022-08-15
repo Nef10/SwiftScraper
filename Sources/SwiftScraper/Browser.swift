@@ -45,6 +45,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
 
     private let moduleName: String
     private let logger = Logger()
+    /// The webview itself
     public private (set) var webView: WKWebView!
     private let userContentController = WKUserContentController()
     private var navigationCallback: NavigationCallback?
@@ -95,10 +96,21 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
 
     // MARK: - WKNavigationDelegate
 
+    /// Tells the delegate that navigation is complete.
+    /// - Parameters:
+    ///   - webView: The web view that loaded the content.
+    ///   - navigation: The navigation object that finished.
     public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         callNavigationCompletion(result: .success(()))
     }
 
+    /// Tells the delegate that an error occurred during the early navigation process.
+    /// - Parameters:
+    ///   - webView: The web view that called the delegate method.
+    ///   - navigation: The navigation object for the operation. This object corresponds to a
+    ///      WKNavigation object that WebKit returned when the load operation began. You use it
+    ///      to track the progress of that operation.
+    ///   - error: The error that occurred.
     public func webView(
         _ webView: WKWebView,
         didFailProvisionalNavigation navigation: WKNavigation!,
@@ -109,6 +121,12 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
         callNavigationCompletion(result: .failure(navigationError))
     }
 
+    /// Tells the delegate that an error occurred during navigation.
+    /// - Parameters:
+    ///   - webView: The web view that reported the error.
+    ///   - navigation: The navigation object for the operation. This object corresponds to a WKNavigation object
+    ///      that WebKit returned when the load operation began. You use it to track the progress of that operation.
+    ///   - error: The error that occurred.
     public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
         logger.warning("didFailNavigation: \(error.localizedDescription)")
         let nsError = error as NSError
@@ -132,6 +150,10 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
 
     // MARK: - WKScriptMessageHandler
 
+    /// Tells the handler that a webpage sent a script message.
+    /// - Parameters:
+    ///   - userContentController: The user content controller that delivered the message to your handler.
+    ///   - message: An object that contains the message details.
     public func userContentController(
         _ userContentController: WKUserContentController,
         didReceive message: WKScriptMessage
