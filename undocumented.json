@@ -1,47 +1,6 @@
 {
   "warnings": [
-    {
-      "file": "/Users/runner/work/SwiftScraper/SwiftScraper/Sources/SwiftScraper/Browser.swift",
-      "line": 48,
-      "symbol": "Browser.webView",
-      "symbol_kind": "source.lang.swift.decl.var.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/SwiftScraper/SwiftScraper/Sources/SwiftScraper/Browser.swift",
-      "line": 98,
-      "symbol": "Browser.webView(_:didFinish:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/SwiftScraper/SwiftScraper/Sources/SwiftScraper/Browser.swift",
-      "line": 102,
-      "symbol": "Browser.webView(_:didFailProvisionalNavigation:withError:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/SwiftScraper/SwiftScraper/Sources/SwiftScraper/Browser.swift",
-      "line": 112,
-      "symbol": "Browser.webView(_:didFail:withError:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/SwiftScraper/SwiftScraper/Sources/SwiftScraper/Browser.swift",
-      "line": 135,
-      "symbol": "Browser.userContentController(_:didReceive:)",
-      "symbol_kind": "source.lang.swift.decl.function.method.instance",
-      "warning": "undocumented"
-    },
-    {
-      "file": "/Users/runner/work/SwiftScraper/SwiftScraper/Sources/SwiftScraper/SwiftScraperError.swift",
-      "line": 11,
-      "symbol": "SwiftScraperError",
-      "symbol_kind": "source.lang.swift.decl.enum",
-      "warning": "undocumented"
-    }
+
   ],
   "source_directory": "/Users/runner/work/SwiftScraper/SwiftScraper"
 }

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>WaitForConditionStep Class Reference</title>
+    <title>AsyncProcessStep Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset='utf-8'>
@@ -13,8 +13,8 @@
     <script src="../js/jazzy.search.js" defer></script>
   </head>
   <body>
-    <a name="//apple_ref/swift/Class/WaitForConditionStep" class="dashAnchor"></a>
-    <a title="WaitForConditionStep Class Reference"></a>
+    <a name="//apple_ref/swift/Class/AsyncProcessStep" class="dashAnchor"></a>
+    <a title="AsyncProcessStep Class Reference"></a>
     <header>
       <div class="content-wrapper">
         <p><a href="../index.html"> Docs</a> (100% documented)</p>
@@ -29,7 +29,7 @@
       <p id="breadcrumbs">
         <a href="../index.html"> Reference</a>
         <img id="carat" src="../img/carat.png" alt=""/>
-        WaitForConditionStep Class Reference
+        AsyncProcessStep Class Reference
       </p>
     </div>
     <div class="content-wrapper">
@@ -137,16 +137,16 @@
       <article class="main-content">
         <section>
           <section class="section">
-            <h1>WaitForConditionStep</h1>
+            <h1>AsyncProcessStep</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">WaitForConditionStep</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Step.html">Step</a></span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">class</span> <span class="kt">AsyncProcessStep</span> <span class="p">:</span> <span class="kt"><a href="../Protocols/Step.html">Step</a></span></code></pre>
 
                 </div>
               </div>
-            <p>Step that waits for condition to become true before proceeding,
-failing if the condition is still false when timeout occurs.</p>
+            <p>Step that performs some async processing, can update the model dictionary,
+and can be used to drive control flow of the steps.</p>
 
           </section>
           <section class="section task-group-section">
@@ -155,9 +155,9 @@ failing if the condition is still false when timeout occurs.</p>
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12SwiftScraper20WaitForConditionStepC13assertionName16timeoutInSecondsACSS_Sdtcfc"></a>
-                    <a name="//apple_ref/swift/Method/init(assertionName:timeoutInSeconds:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12SwiftScraper20WaitForConditionStepC13assertionName16timeoutInSecondsACSS_Sdtcfc">init(assertionName:<wbr>timeoutInSeconds:<wbr>)</a>
+                    <a name="/s:12SwiftScraper16AsyncProcessStepC7handlerACySDySSypG_yAE_AA0E10FlowResultOtctc_tcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12SwiftScraper16AsyncProcessStepC7handlerACySDySSypG_yAE_AA0E10FlowResultOtctc_tcfc">init(handler:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -172,7 +172,7 @@ failing if the condition is still false when timeout occurs.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">assertionName</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">timeoutInSeconds</span><span class="p">:</span> <span class="kt">TimeInterval</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span><span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:12SwiftScraper23AsyncProcessStepHandlera">AsyncProcessStepHandler</a></span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -183,24 +183,12 @@ failing if the condition is still false when timeout occurs.</p>
                             <tr>
                               <td>
                                 <code>
-                                <em>assertionName</em>
+                                <em>handler</em>
                                 </code>
                               </td>
                               <td>
                                 <div>
-                                  <p>Name of JavaScript function that evaluates the conditions and returns a Boolean.</p>
-                                </div>
-                              </td>
-                            </tr>
-                            <tr>
-                              <td>
-                                <code>
-                                <em>timeoutInSeconds</em>
-                                </code>
-                              </td>
-                              <td>
-                                <div>
-                                  <p>The number of seconds before the step fails due to timeout.</p>
+                                  <p>The action to perform in this step.</p>
                                 </div>
                               </td>
                             </tr>

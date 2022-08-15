@@ -16,7 +16,7 @@
     <a title="  Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="index.html"> Docs</a> (91% documented)</p>
+        <p><a href="index.html"> Docs</a> (100% documented)</p>
         <div class="header-right">
           <form role="search" action="search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -37,6 +37,9 @@
           <li class="nav-group-name">
             <a href="Classes.html">Classes</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Classes/AsyncProcessStep.html">AsyncProcessStep</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Classes/AsyncScriptStep.html">AsyncScriptStep</a>
               </li>
@@ -105,6 +108,9 @@
           <li class="nav-group-name">
             <a href="Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="Typealiases.html#/s:12SwiftScraper23AsyncProcessStepHandlera">AsyncProcessStepHandler</a>
+              </li>
               <li class="nav-group-task">
                 <a href="Typealiases.html#/s:12SwiftScraper4JSONa">JSON</a>
               </li>
@@ -386,6 +392,13 @@ In this case check out the advanced usage to add a step which waits till the pag
 </ul>
 
 <p>These concepts apply to the <code><a href="Classes/ProcessStep.html">ProcessStep</a></code>, <code><a href="Classes/ScriptStep.html">ScriptStep</a></code> and <code><a href="Classes/AsyncScriptStep.html">AsyncScriptStep</a></code>. We&rsquo;ll explore them in the next two sections.</p>
+
+<p>If you need to execute a asynchronous actions, use the <code><a href="Classes/AsyncProcessStep.html">AsyncProcessStep</a></code> instead:</p>
+<pre class="highlight swift"><code><span class="k">let</span> <span class="nv">processStep</span> <span class="o">=</span> <span class="kt">AsyncProcessStep</span> <span class="p">{</span> <span class="n">model</span><span class="p">,</span> <span class="n">completion</span> <span class="k">in</span>
+    <span class="c1">// perform some custom action here</span>
+    <span class="nf">completion</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="o">.</span><span class="n">proceed</span><span class="p">)</span>
+<span class="p">}</span>
+</code></pre>
 <h2 id='passing-model-data' class='heading'>Passing model data</h2>
 
 <p>The <code><a href="Classes/ProcessStep.html">ProcessStep</a></code>, <code><a href="Classes/ScriptStep.html">ScriptStep</a></code> and <code><a href="Classes/AsyncScriptStep.html">AsyncScriptStep</a></code> all have a handler closure to perform processing, and these handlers all have a model parameter of type <code>inout JSON</code>. Modify this JSON dictionary to save data during one step, and then read it in another step.</p>
@@ -443,6 +456,9 @@ and can easily lead to unmaintainable spaghetti 🍝 steps.</p>
     <span class="nv">assertionName</span><span class="p">:</span> <span class="s">"testThatStuffIsReady"</span><span class="p">,</span>
     <span class="nv">timeoutInSeconds</span><span class="p">:</span> <span class="mi">2</span><span class="p">)</span>
 </code></pre>
+<h2 id='using-parameter-from-the-model' class='heading'>Using parameter from the model</h2>
+
+<p>For the steps accepting <code>params</code>, you can alternatively use <code>paramsKeys</code> and pass in an array of keys for the model. The JavaScript function will then receive parameters corresponding to the current value of this key in the model dictionary. You can use this if the value of your parameters is not yet known when you create the step. For example, use a <code><a href="Classes/AsyncProcessStep.html">AsyncProcessStep</a></code> to ask your user for a value and then save it in the model.</p>
 <h1 id='list-of-steps' class='heading'>List of Steps</h1>
 
 <p>Here is the full list of steps discussed above:</p>
@@ -452,7 +468,8 @@ and can easily lead to unmaintainable spaghetti 🍝 steps.</p>
 <li><code><a href="Classes/PageChangeStep.html">PageChangeStep</a></code> - Calls a JavaScript function which is expected to navigate to a different page. Optionally executes a JavaScript assertion function to see that the new page loaded correctly</li>
 <li><code><a href="Classes/ScriptStep.html">ScriptStep</a></code> - Runs a JavaScript function and returns the return value</li>
 <li><code><a href="Classes/AsyncScriptStep.html">AsyncScriptStep</a></code> - Runs an asynchronous JavaScript function and returns the return value</li>
-<li><code><a href="Classes/ProcessStep.html">ProcessStep</a></code> - Runs swift code, which allows you do execute actions outside the scraper or modify the control flow</li>
+<li><code><a href="Classes/ProcessStep.html">ProcessStep</a></code> - Runs swift code, which allows you to execute actions outside the scraper or modify the control flow</li>
+<li><code><a href="Classes/AsyncProcessStep.html">AsyncProcessStep</a></code> - Runs swift code, which allows you to execute asynchronous actions outside the scraper or modify the control flow</li>
 <li><code><a href="Classes/WaitStep.html">WaitStep</a></code> - Waits a fixed number of seconds</li>
 <li><code><a href="Classes/WaitForConditionStep.html">WaitForConditionStep</a></code> - Repeatedly calls a JavaScript function till it returns true (or times out)</li>
 </ul>
@@ -484,7 +501,7 @@ and can easily lead to unmaintainable spaghetti 🍝 steps.</p>
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2022 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2022-08-14)</p>
+          <p>&copy; 2022 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2022-08-15)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>

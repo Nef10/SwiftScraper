@@ -17,7 +17,7 @@
     <a title="Browser Class Reference"></a>
     <header>
       <div class="content-wrapper">
-        <p><a href="../index.html"> Docs</a> (91% documented)</p>
+        <p><a href="../index.html"> Docs</a> (100% documented)</p>
         <div class="header-right">
           <form role="search" action="../search.json">
             <input type="text" placeholder="Search documentation" data-typeahead>
@@ -38,6 +38,9 @@
           <li class="nav-group-name">
             <a href="../Classes.html">Classes</a>
             <ul class="nav-group-tasks">
+              <li class="nav-group-task">
+                <a href="../Classes/AsyncProcessStep.html">AsyncProcessStep</a>
+              </li>
               <li class="nav-group-task">
                 <a href="../Classes/AsyncScriptStep.html">AsyncScriptStep</a>
               </li>
@@ -107,6 +110,9 @@
             <a href="../Typealiases.html">Type Aliases</a>
             <ul class="nav-group-tasks">
               <li class="nav-group-task">
+                <a href="../Typealiases.html#/s:12SwiftScraper23AsyncProcessStepHandlera">AsyncProcessStepHandler</a>
+              </li>
+              <li class="nav-group-task">
                 <a href="../Typealiases.html#/s:12SwiftScraper4JSONa">JSON</a>
               </li>
               <li class="nav-group-task">
@@ -169,7 +175,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>The webview itself</p>
 
                       </div>
                       <div class="declaration">
@@ -209,7 +215,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Tells the delegate that navigation is complete.</p>
 
                       </div>
                       <div class="declaration">
@@ -219,6 +225,37 @@
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span><span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span> <span class="n">didFinish</span> <span class="nv">navigation</span><span class="p">:</span> <span class="kt">WKNavigation</span><span class="o">!</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>webView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The web view that loaded the content.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>navigation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The navigation object that finished.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -236,7 +273,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Tells the delegate that an error occurred during the early navigation process.</p>
 
                       </div>
                       <div class="declaration">
@@ -250,6 +287,51 @@
 <span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>webView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The web view that called the delegate method.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>navigation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The navigation object for the operation. This object corresponds to a
+WKNavigation object that WebKit returned when the load operation began. You use it
+to track the progress of that operation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -267,7 +349,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Tells the delegate that an error occurred during navigation.</p>
 
                       </div>
                       <div class="declaration">
@@ -277,6 +359,50 @@
                           <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">webView</span><span class="p">(</span><span class="n">_</span> <span class="nv">webView</span><span class="p">:</span> <span class="kt">WKWebView</span><span class="p">,</span> <span class="n">didFail</span> <span class="nv">navigation</span><span class="p">:</span> <span class="kt">WKNavigation</span><span class="o">!</span><span class="p">,</span> <span class="n">withError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">)</span></code></pre>
 
                         </div>
+                      </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>webView</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The web view that reported the error.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>navigation</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The navigation object for the operation. This object corresponds to a WKNavigation object
+that WebKit returned when the load operation began. You use it to track the progress of that operation.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>error</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The error that occurred.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
                       </div>
                     </section>
                   </div>
@@ -307,7 +433,7 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Undocumented</p>
+                        <p>Tells the handler that a webpage sent a script message.</p>
 
                       </div>
                       <div class="declaration">
@@ -321,6 +447,37 @@
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>userContentController</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>The user content controller that delivered the message to your handler.</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>message</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>An object that contains the message details.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                     </section>
                   </div>
                 </li>
@@ -329,7 +486,7 @@
           </section>
         </section>
         <section id="footer">
-          <p>&copy; 2022 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2022-08-14)</p>
+          <p>&copy; 2022 <a class="link" href="" target="_blank" rel="external noopener"></a>. All rights reserved. (Last updated: 2022-08-15)</p>
           <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.2</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
         </section>
       </article>
