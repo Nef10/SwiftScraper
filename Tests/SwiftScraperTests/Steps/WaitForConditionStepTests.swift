@@ -27,12 +27,59 @@ class WaitForConditionStepTests: StepRunnerCommonTests {
                        [.inProgress(index: 0), .inProgress(index: 1), .inProgress(index: 2), .success])
     }
 
+    func testWaitForConditionStepParam() throws {
+        let exp = expectation(description: #function)
+
+        let step2 = WaitForConditionStep(
+            assertionName: "testWaitForCondition",
+            timeoutInSeconds: 2,
+            params: "modified")
+
+        let step3 = ScriptStep(functionName: "getInnerText", params: "#foo") { response, _ in
+            XCTAssertEqual(response as? String, "modified")
+            exp.fulfill()
+            return .proceed
+        }
+
+        let stepRunner = try makeStepRunner(steps: [openWaitPageStep, step2, step3])
+        stepRunner.run()
+        waitForExpectations()
+        XCTAssertEqual(stepRunnerStates,
+                       [.inProgress(index: 0), .inProgress(index: 1), .inProgress(index: 2), .success])
+    }
+
+    func testWaitForConditionStepParamKeys() throws {
+        let exp = expectation(description: #function)
+
+        let step2 = ProcessStep { model in
+            model["check"] = "modified"
+            return .proceed
+        }
+
+        let step3 = WaitForConditionStep(
+            assertionName: "testWaitForCondition",
+            timeoutInSeconds: 2,
+            paramsKeys: ["check", "null"])
+
+        let step4 = ScriptStep(functionName: "getInnerText", params: "#foo") { response, _ in
+            XCTAssertEqual(response as? String, "modified")
+            exp.fulfill()
+            return .proceed
+        }
+
+        let stepRunner = try makeStepRunner(steps: [openWaitPageStep, step2, step3, step4])
+        stepRunner.run()
+        waitForExpectations()
+        XCTAssertEqual(stepRunnerStates,
+                       [.inProgress(index: 0), .inProgress(index: 1), .inProgress(index: 2), .inProgress(index: 3), .success])
+    }
+
     func testWaitForConditionStepTimeout() throws {
         let exp = expectation(description: #function)
 
         let step2 = WaitForConditionStep(
             assertionName: "testWaitForCondition",
-            timeoutInSeconds: 0.4)
+            timeoutInSeconds: 0.3)
 
         let stepRunner = try makeStepRunner(steps: [openWaitPageStep, step2])
         stepRunner.run {

@@ -18,6 +18,8 @@ public class WaitForConditionStep: Step {
 
     private var assertionName: String
     private var timeoutInSeconds: TimeInterval
+    private var params: [Any]
+    private var paramsKeys: [String]
 
     private var startRunDate: Date?
     private weak var browser: Browser?
@@ -28,9 +30,14 @@ public class WaitForConditionStep: Step {
     ///
     /// - parameter assertionName: Name of JavaScript function that evaluates the conditions and returns a Boolean.
     /// - parameter timeoutInSeconds: The number of seconds before the step fails due to timeout.
-    public init(assertionName: String, timeoutInSeconds: TimeInterval) {
+    /// - parameter params: Parameters which will be passed to the JavaScript function.
+    /// - parameter paramsKeys: Look up the values from the JSON model dictionary using these keys,
+    ///   and pass them as the parameters to the JavaScript function. If provided, these are used instead of `params`.
+    public init(assertionName: String, timeoutInSeconds: TimeInterval, params: Any..., paramsKeys: [String] = []) {
         self.assertionName = assertionName
         self.timeoutInSeconds = timeoutInSeconds
+        self.params = params
+        self.paramsKeys = paramsKeys
     }
 
     public func run(with browser: Browser, model: JSON, completion: @escaping StepCompletionCallback) {
@@ -46,7 +53,13 @@ public class WaitForConditionStep: Step {
             let browser = browser,
             let model = model,
             let completion = completion else { return }
-        browser.runScript(functionName: assertionName) { [weak self] result in
+        let params: [Any]
+        if paramsKeys.isEmpty {
+            params = self.params
+        } else {
+            params = paramsKeys.map { model[$0] ?? NSNull() }
+        }
+        browser.runScript(functionName: assertionName, params: params) { [weak self] result in
             guard let this = self else {
                 return
             }

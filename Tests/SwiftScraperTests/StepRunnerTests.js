@@ -81,6 +81,10 @@ var StepRunnerTests = (function() {
         return document.getElementById('foo').innerText == 'modified';
     }
 
+    function testWaitForConditionInput(input) {
+        return document.getElementById('foo').innerText == input;
+    }
+
     function generateException() {
         throw "JavaScript exception thrown";
     }
@@ -107,6 +111,7 @@ var StepRunnerTests = (function() {
         getStringAsync: getStringAsync,
         multiArgAsync: multiArgAsync,
         testWaitForCondition: testWaitForCondition,
+        testWaitForConditionInput: testWaitForConditionInput,
         generateException: generateException,
         modifyPage1Heading: modifyPage1Heading
     };
