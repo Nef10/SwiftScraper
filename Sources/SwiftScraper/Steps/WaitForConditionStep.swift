@@ -18,7 +18,6 @@ public class WaitForConditionStep: Step {
 
     private var assertionName: String
     private var timeoutInSeconds: TimeInterval
-    private var timer: Timer?
 
     private var startRunDate: Date?
     private weak var browser: Browser?
@@ -39,14 +38,9 @@ public class WaitForConditionStep: Step {
         self.browser = browser
         self.model = model
         self.completion = completion
-        timer = Timer.scheduledTimer(timeInterval: Constants.refreshInterval,
-                                     target: self,
-                                     selector: #selector(handleTimer),
-                                     userInfo: nil,
-                                     repeats: true)
+        handleTimer()
     }
 
-    @objc
     func handleTimer() {
         guard let startRunDate = startRunDate,
             let browser = browser,
@@ -65,6 +59,13 @@ public class WaitForConditionStep: Step {
                     if Date().timeIntervalSince(startRunDate) > this.timeoutInSeconds {
                         this.reset()
                         completion(.failure(SwiftScraperError.timeout, model))
+                    } else {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.refreshInterval) { [weak this] in
+                            guard let that = this else {
+                                return
+                            }
+                            that.handleTimer()
+                        }
                     }
                 }
             case .failure(let error):
@@ -75,8 +76,6 @@ public class WaitForConditionStep: Step {
     }
 
     private func reset() {
-        timer?.invalidate()
-        timer = nil
         startRunDate = nil
         browser = nil
         model = nil
