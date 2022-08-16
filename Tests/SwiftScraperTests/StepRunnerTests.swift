@@ -37,6 +37,7 @@ class StepRunnerTests: StepRunnerCommonTests {
 
     func testReuse() throws {
         let exp = expectation(description: #function)
+        var hitFirstCompletion = false
 
         // Arrange - load a screen and modify the heading
 
@@ -54,12 +55,16 @@ class StepRunnerTests: StepRunnerCommonTests {
         }
 
         let stepRunner = try makeStepRunner(steps: [TestHelper.openPageOneStep, step2, step3, step4])
-        stepRunner.run()
+        stepRunner.run {
+            XCTAssertFalse(hitFirstCompletion)
+            hitFirstCompletion = true
+        }
         waitForExpectations()
 
         // Act and Assert - process more steps on a step runner that has finished executing
 
         let exp2 = expectation(description: #function + "2")
+        let exp3 = expectation(description: #function + "3")
 
         let step5 = ScriptStep(functionName: "getInnerText", params: "h1") { response, _ in
             XCTAssertEqual(response as? String, "heading changed", "Browser should retain state of the web page")
@@ -75,11 +80,12 @@ class StepRunnerTests: StepRunnerCommonTests {
         }
 
         stepRunnerStates = []
-        stepRunner.run(steps: [step5, step6, step7])
+        stepRunner.run(steps: [step5, step6, step7]) {
+            exp3.fulfill()
+        }
         waitForExpectations()
 
-        XCTAssertEqual(stepRunnerStates,
-                       [.notStarted, .inProgress(index: 0), .inProgress(index: 1), .inProgress(index: 2), .success])
+        XCTAssertEqual(stepRunnerStates, [.notStarted, .inProgress(index: 0), .inProgress(index: 1), .inProgress(index: 2), .success])
     }
 }
 
