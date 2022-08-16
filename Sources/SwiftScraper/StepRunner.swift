@@ -158,7 +158,10 @@ public class StepRunner {
     /// Resets the existing StepRunner and execute the given steps in the existing browser.
     ///
     /// Use this to perform more steps on a StepRunner which has previously finished processing.
-    public func run(steps: [Step]) {
+    public func run(steps: [Step], completion: (() -> Void)? = nil) {
+        if let completion = completion {
+            self.completion = completion
+        }
         state = .notStarted
         self.steps = steps
         index = 0
