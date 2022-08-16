@@ -85,8 +85,7 @@ class StepRunnerTests: StepRunnerCommonTests {
         }
         waitForExpectations()
 
-        XCTAssertEqual(stepRunnerStates,
-                       [.notStarted, .inProgress(index: 0), .inProgress(index: 1), .inProgress(index: 2), .success])
+        XCTAssertEqual(stepRunnerStates, [.notStarted, .inProgress(index: 0), .inProgress(index: 1), .inProgress(index: 2), .success])
     }
 }
 
