@@ -4,38 +4,35 @@ import XCTest
 final class SwiftScraperErrorTests: XCTestCase {
 
     func testDownloadErrorString() {
-         XCTAssertEqual(
+        XCTAssertEqual(
             "\(SwiftScraperError.parameterSerialization.localizedDescription)",
             "Could not serialize the parameters to pass to the script"
         )
-         XCTAssertEqual(
+        XCTAssertEqual(
             "\(SwiftScraperError.contentUnexpected.localizedDescription)",
             "Something went wrong, the page contents was not what was expected"
         )
-         XCTAssertEqual(
+        XCTAssertEqual(
             "\(SwiftScraperError.javascriptError(errorMessage: "message1").localizedDescription)",
             "A JavaScript error occurred: message1"
         )
-         XCTAssertEqual(
+        XCTAssertEqual(
             "\(SwiftScraperError.navigationFailed(errorMessage: "message2").localizedDescription)",
             "Something went wrong when navigating to the page: message2"
         )
-         XCTAssertEqual(
+        XCTAssertEqual(
             "\(SwiftScraperError.incorrectStep.localizedDescription)",
             "An incorrect step was specified"
         )
-         XCTAssertEqual(
+        XCTAssertEqual(
             "\(SwiftScraperError.timeout.localizedDescription)",
             "Timeout occurred while waiting for a step to complete"
         )
-         XCTAssertEqual(
+        XCTAssertEqual(
             "\(SwiftScraperError.commonScriptNotFound.localizedDescription)",
             "Could not load SwiftScraper.js"
         )
-         XCTAssertEqual(
-            "\(SwiftScraperError.scriptNotFound(name: "name1").localizedDescription)",
-            "Could not load name1"
-        )
+        XCTAssertEqual("\(SwiftScraperError.scriptNotFound(name: "name1").localizedDescription)", "Could not load name1")
     }
 
 }

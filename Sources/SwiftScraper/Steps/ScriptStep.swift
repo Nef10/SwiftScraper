@@ -57,7 +57,7 @@ public class ScriptStep: Step {
             params = paramsKeys.map { model[$0] ?? NSNull() }
         }
         runScript(browser: browser, functionName: functionName, params: params) { [weak self] result in
-            guard let this = self else {
+            guard let self = self else {
                 return
             }
             switch result {
@@ -65,7 +65,7 @@ public class ScriptStep: Step {
                 completion(.failure(error, model))
             case .success(let response):
                 var modelCopy = model
-                let result = this.handler(response, &modelCopy)
+                let result = self.handler(response, &modelCopy)
                 completion(result.convertToStepCompletionResult(with: modelCopy))
             }
         }

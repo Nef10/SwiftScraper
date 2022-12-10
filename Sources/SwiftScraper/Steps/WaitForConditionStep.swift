@@ -49,43 +49,44 @@ public class WaitForConditionStep: Step {
     }
 
     func handleTimer() {
-        guard let startRunDate = startRunDate,
-            let browser = browser,
-            let model = model,
-            let completion = completion else { return }
-        let params: [Any]
-        if paramsKeys.isEmpty {
-            params = self.params
-        } else {
-            params = paramsKeys.map { model[$0] ?? NSNull() }
+        guard let startRunDate = startRunDate, let browser = browser, let model = model, let completion = completion else {
+             return
         }
+        let params = getParameters()
         browser.runScript(functionName: assertionName, params: params) { [weak self] result in
-            guard let this = self else {
+            guard let self = self else {
                 return
             }
             switch result {
             case .success(let isOk):
                 if isOk as? Bool ?? false {
-                    this.reset()
+                    self.reset()
                     completion(.proceed(model))
                 } else {
-                    if Date().timeIntervalSince(startRunDate) > this.timeoutInSeconds {
-                        this.reset()
+                    if Date().timeIntervalSince(startRunDate) > self.timeoutInSeconds {
+                        self.reset()
                         completion(.failure(SwiftScraperError.timeout, model))
                     } else {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.refreshInterval) { [weak this] in
-                            guard let that = this else {
-                                return
-                            }
-                            that.handleTimer()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + Constants.refreshInterval) { [weak self] in
+                            self?.handleTimer()
                         }
                     }
                 }
             case .failure(let error):
-                this.reset()
+                self.reset()
                 completion(.failure(error, model))
             }
         }
+    }
+
+    private func getParameters() -> [Any] {
+        let params: [Any]
+        if paramsKeys.isEmpty {
+            params = self.params
+        } else {
+            params = paramsKeys.map { model?[$0] ?? NSNull() }
+        }
+        return params
     }
 
     private func reset() {

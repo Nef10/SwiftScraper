@@ -35,7 +35,7 @@ class StepRunnerCommonTests: XCTestCase {
 
 class StepRunnerTests: StepRunnerCommonTests {
 
-    func testReuse() throws {
+    func testReuse() throws { // swiftlint:disable:this function_body_length
         let exp = expectation(description: #function)
         var hitFirstCompletion = false
 
