@@ -129,8 +129,7 @@ class AsyncProcessStepTests: StepRunnerCommonTests {
     }
 
     func testAsyncProcessStepSkipStepToLoop() throws {
-        var counter1 = 0
-        var counter2 = 0
+        var counter1 = 0, counter2 = 0
 
         let exp = expectation(description: #function)
 
@@ -145,11 +144,8 @@ class AsyncProcessStepTests: StepRunnerCommonTests {
             var model = model
             model["step3-\(counter2)"] = counter2
             counter2 += 1
-            if counter2 == 3 {
-                completion(model, .proceed)  // continue as normal after 3 increments
-            } else {
-                completion(model, .jumpToStep(1))  // loop back to step2 again
-            }
+            // for the first to runs loop back to step2 again, for the third one continue as normal
+            completion(model, counter2 == 3 ? .proceed : .jumpToStep(1))
         }
 
         let stepRunner = try makeStepRunner(steps: [TestHelper.openPageOneStep, step2, step3])

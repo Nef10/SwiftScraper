@@ -48,15 +48,13 @@ class ScriptStepTests: StepRunnerCommonTests {
         }
 
         let step6 = ScriptStep(functionName: "getJsonObject") { response, _ in
-            let json = response as? JSON
-            XCTAssertEqual(json?["message"] as? String, "something")
+            XCTAssertEqual((response as? JSON)?["message"] as? String, "something")
             return .proceed
         }
 
         let step7 = ScriptStep(functionName: "getJsonArray") { response, _ in
-            let jsonArray = response as? [JSON]
-            XCTAssertEqual(jsonArray?[0]["fruit"] as? String, "apple")
-            XCTAssertEqual(jsonArray?[1]["fruit"] as? String, "pear")
+            XCTAssertEqual((response as? [JSON])?[0]["fruit"] as? String, "apple")
+            XCTAssertEqual((response as? [JSON])?[1]["fruit"] as? String, "pear")
             exp.fulfill()
             return .proceed
         }
