@@ -206,7 +206,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
                                         ?? nsError.localizedDescription
                 self.logger.warning("javaScriptExceptionOccurred error: \(jsErrorMessage)")
                 completion(.failure(SwiftScraperError.javascriptError(errorMessage: jsErrorMessage)))
-            } else if let error = error {
+            } else if let error {
                 self.logger.warning("javascript error: \(error.localizedDescription)")
                 completion(.failure(SwiftScraperError.javascriptError(errorMessage: error.localizedDescription)))
             } else {

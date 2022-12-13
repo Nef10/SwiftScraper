@@ -49,12 +49,12 @@ public class WaitForConditionStep: Step {
     }
 
     func handleTimer() {
-        guard let startRunDate = startRunDate, let browser = browser, let model = model, let completion = completion else {
+        guard let startRunDate, let browser, let model, let completion else {
              return
         }
         let params = getParameters()
         browser.runScript(functionName: assertionName, params: params) { [weak self] result in
-            guard let self = self else {
+            guard let self else {
                 return
             }
             switch result {

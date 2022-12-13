@@ -93,7 +93,7 @@ extension XCTestCase {
 
     func waitForExpectations() {
         waitForExpectations(timeout: 5) { error in
-            guard let error = error else {
+            guard let error else {
                 return
             }
             XCTFail(error.localizedDescription)

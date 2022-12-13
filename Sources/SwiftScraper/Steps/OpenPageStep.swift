@@ -24,7 +24,7 @@ public class OpenPageStep: Step, NavigableStep {
 
     public func run(with browser: Browser, model: JSON, completion: @escaping StepCompletionCallback) {
         browser.load(path: path) { [weak self] result in
-            guard let self = self else {
+            guard let self else {
                 return
             }
             if case .failure(let error) = result {
