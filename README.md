@@ -342,6 +342,18 @@ let conditionStep = ProcessStep { model in
 
 You can also have an early exit from the steps. The return value of `.finish` will stop execution as a success, while `.failure(Error)` will stop execution with a failure.
 
+## Download Step
+A step that downloads the content of a given URL and returns it as a string.
+
+```swift
+let downloadCSV = DownloadStep(url: myURL) { response, model in
+    model["fileContent"] = response as? String // For example, save the content into the model
+    return .proceed // you can use any control flow logic you like (see above)
+}
+
+```
+
+This step is helpful if you want to get content from a non-HTML page, like a CSV document. On HTML documents you can use a normal `ScriptStep` to read the document contents, however JavaScript cannot run on CSVs for example.
 
 ## Wait Step
 A step that waits for a set period of time.
@@ -375,6 +387,7 @@ Here is the full list of steps discussed above:
 - `AsyncScriptStep` - Runs an asynchronous JavaScript function and returns the return value
 - `ProcessStep` - Runs swift code, which allows you to execute actions outside the scraper or modify the control flow
 - `AsyncProcessStep` - Runs swift code, which allows you to execute asynchronous actions outside the scraper or modify the control flow
+- `DownloadStep` - Downloads content from a URL and returns it as string
 - `WaitStep` - Waits a fixed number of seconds
 - `WaitForConditionStep` - Repeatedly calls a JavaScript function till it returns true (or times out)
 

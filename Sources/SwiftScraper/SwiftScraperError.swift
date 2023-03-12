@@ -36,6 +36,9 @@ public enum SwiftScraperError: Error, LocalizedError, Equatable {
     /// Something went wrong with loading the testing JavaScript file
     case scriptNotFound(name: String)
 
+    /// Unable to read downloaded file from disk
+    case couldNotReadDownloadedFile
+
     public var errorDescription: String? {
         switch self {
         case .parameterSerialization:
@@ -54,6 +57,8 @@ public enum SwiftScraperError: Error, LocalizedError, Equatable {
             return "Could not load SwiftScraper.js"
         case .scriptNotFound(let name):
             return "Could not load \(name)"
+        case .couldNotReadDownloadedFile:
+            return "Unable to read downloaded file"
         }
     }
 }

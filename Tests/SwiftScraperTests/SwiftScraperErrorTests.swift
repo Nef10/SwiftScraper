@@ -33,6 +33,7 @@ final class SwiftScraperErrorTests: XCTestCase {
             "Could not load SwiftScraper.js"
         )
         XCTAssertEqual("\(SwiftScraperError.scriptNotFound(name: "name1").localizedDescription)", "Could not load name1")
+        XCTAssertEqual("\(SwiftScraperError.couldNotReadDownloadedFile.localizedDescription)", "Unable to read downloaded file")
     }
 
 }
