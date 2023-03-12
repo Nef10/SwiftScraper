@@ -12,16 +12,16 @@ class DownloadStepTests: StepRunnerCommonTests {
         let fileName = temporaryDir + "/" + UUID().description
         downloadURL = URL(fileURLWithPath: fileName)
         try FileManager.default.copyItem(at: bundleURL, to: downloadURL)
+        try super.setUpWithError()
     }
 
     override func tearDown() {
         try? FileManager.default.removeItem(at: downloadURL)
+        super.tearDown()
     }
 
     @available(iOS 14.5, macOS 11.3, *)
     func testDownloadStep() throws {
-
-
         let exp = expectation(description: #function)
         let exp1 = expectation(description: #function)
         let downloadStep = DownloadStep(url: downloadURL) { result, _ in
