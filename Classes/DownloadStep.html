@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>StepFlowResult Enumeration Reference</title>
+    <title>DownloadStep Class Reference</title>
     <link rel="stylesheet" type="text/css" href="../css/jazzy.css" />
     <link rel="stylesheet" type="text/css" href="../css/highlight.css" />
     <meta charset="utf-8">
@@ -11,9 +11,9 @@
   </head>
   <body>
 
-    <a name="//apple_ref/swift/Enum/StepFlowResult" class="dashAnchor"></a>
+    <a name="//apple_ref/swift/Class/DownloadStep" class="dashAnchor"></a>
 
-    <a title="StepFlowResult Enumeration Reference"></a>
+    <a title="DownloadStep Class Reference"></a>
 
     <header class="header">
       <p class="header-col header-col--primary">
@@ -42,7 +42,7 @@
     <p class="breadcrumbs">
       <a class="breadcrumb" href="../index.html">SwiftScraper Reference</a>
       <img class="carat" src="../img/carat.png" alt=""/>
-      StepFlowResult Enumeration Reference
+      DownloadStep Class Reference
     </p>
 
     <div class="content-wrapper">
@@ -154,18 +154,22 @@
 
         <section class="section">
           <div class="section-content top-matter">
-            <h1>StepFlowResult</h1>
+            <h1>DownloadStep</h1>
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">enum</span> <span class="kt">StepFlowResult</span></code></pre>
+                  <pre class="highlight swift"><code><span class="kd">@available(iOS 14.5, macOS 11.3, *)</span>
+<span class="kd">public</span> <span class="kd">class</span> <span class="kt">DownloadStep</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/Step.html">Step</a></span></code></pre>
+<pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">DownloadStep</span><span class="p">:</span> <span class="kt">WKDownloadDelegate</span></code></pre>
 
                 </div>
               </div>
-            <p>Result which defines control flow of the steps.</p>
+            <p>Step that downloads a file from a given URL and returns the contents</p>
+
+<p>The <code><a href="../Enums/StepFlowResult.html">StepFlowResult</a></code> returned by the <code>handler</code> can be used to drive control flow of the steps.</p>
 
               <div class="slightly-smaller">
-                <a href="https://github.com/Nef10/SwiftScraper/blob/main/Sources/SwiftScraper/Steps/Common/StepFlowResult.swift#L12-L38">Show on GitHub</a>
+                <a href="https://github.com/Nef10/SwiftScraper/blob/main/Sources/SwiftScraper/Steps/DownloadStep.swift#L17-L46">Show on GitHub</a>
               </div>
           </div>
         </section>
@@ -177,9 +181,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12SwiftScraper14StepFlowResultO7proceedyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/proceed" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12SwiftScraper14StepFlowResultO7proceedyA2CmF">proceed</a>
+                    <a name="/s:12SwiftScraper12DownloadStepC3url7handlerAC10Foundation3URLV_AA0D10FlowResultOypSg_SDySSypGztctcfc"></a>
+                    <a name="//apple_ref/swift/Method/init(url:handler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12SwiftScraper12DownloadStepC3url7handlerAC10Foundation3URLV_AA0D10FlowResultOypSg_SDySSypGztctcfc">init(url:<wbr>handler:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -187,19 +191,54 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Proceed to the next step.</p>
+                        <p>Initializer.</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">proceed</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="nf">init</span><span class="p">(</span>
+    <span class="nv">url</span><span class="p">:</span> <span class="kt">URL</span><span class="p">,</span>
+    <span class="nv">handler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:12SwiftScraper17ScriptStepHandlera">ScriptStepHandler</a></span>
+<span class="p">)</span></code></pre>
 
                         </div>
                       </div>
+                      <div>
+                        <h4>Parameters</h4>
+                        <table class="graybox">
+                          <tbody>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>url</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>URL to download from</p>
+                                </div>
+                              </td>
+                            </tr>
+                            <tr>
+                              <td>
+                                <code>
+                                <em>handler</em>
+                                </code>
+                              </td>
+                              <td>
+                                <div>
+                                  <p>Callback function which returns the downloaded data, and passes the model JSON dictionary
+for modification.</p>
+                                </div>
+                              </td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/Nef10/SwiftScraper/blob/main/Sources/SwiftScraper/Steps/Common/StepFlowResult.swift#L14">Show on GitHub</a>
+                        <a href="https://github.com/Nef10/SwiftScraper/blob/main/Sources/SwiftScraper/Steps/DownloadStep.swift#L30-L36">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -207,9 +246,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12SwiftScraper14StepFlowResultO06jumpToC0yACSicACmF"></a>
-                    <a name="//apple_ref/swift/Element/jumpToStep(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12SwiftScraper14StepFlowResultO06jumpToC0yACSicACmF">jumpToStep(_:<wbr>)</a>
+                    <a name="/s:12SwiftScraper4StepP3run4with5model10completionyAA7BrowserC_SDySSypGyAA0C16CompletionResultOctF"></a>
+                    <a name="//apple_ref/swift/Method/run(with:model:completion:)" class="dashAnchor"></a>
+                    <a class="token" href="#/s:12SwiftScraper4StepP3run4with5model10completionyAA7BrowserC_SDySSypGyAA0C16CompletionResultOctF">run(with:<wbr>model:<wbr>completion:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -217,19 +256,61 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>Jump to the step at the given index in the <code><a href="../Protocols/Step.html">Step</a></code> array and continue execution from there.</p>
+                        
+                      </div>
+                      <div class="declaration">
+                        <h4>Declaration</h4>
+                        <div class="language">
+                          <p class="aside-title">Swift</p>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">run</span><span class="p">(</span><span class="n">with</span> <span class="nv">browser</span><span class="p">:</span> <span class="kt"><a href="../Classes/Browser.html">Browser</a></span><span class="p">,</span> <span class="nv">model</span><span class="p">:</span> <span class="kt"><a href="../Typealiases.html#/s:12SwiftScraper4JSONa">JSON</a></span><span class="p">,</span> <span class="nv">completion</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="kt"><a href="../Typealiases.html#/s:12SwiftScraper22StepCompletionCallbacka">StepCompletionCallback</a></span><span class="p">)</span></code></pre>
+
+                        </div>
+                      </div>
+                      <div class="slightly-smaller">
+                        <a href="https://github.com/Nef10/SwiftScraper/blob/main/Sources/SwiftScraper/Steps/DownloadStep.swift#L38-L44">Show on GitHub</a>
+                      </div>
+                    </section>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div class="task-group">
+              <div class="task-name-container">
+                <a name="/DownloadStep"></a>
+                <a name="//apple_ref/swift/Section/DownloadStep" class="dashAnchor"></a>
+                <div class="section-name-container">
+                  <a class="section-name-link" href="#/DownloadStep"></a>
+                  <h3 class="section-name"><span>DownloadStep</span>
+</h3>
+                </div>
+              </div>
+              <ul class="item-container">
+                <li class="item">
+                  <div>
+                    <code>
+                    <a name="/c:@CM@SwiftScraper@objc(cs)DownloadStep(im)download:decideDestinationUsingResponse:suggestedFilename:completionHandler:"></a>
+                    <a name="//apple_ref/swift/Method/download(_:decideDestinationUsing:suggestedFilename:completionHandler:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@SwiftScraper@objc(cs)DownloadStep(im)download:decideDestinationUsingResponse:suggestedFilename:completionHandler:">download(_:<wbr>decideDestinationUsing:<wbr>suggestedFilename:<wbr>completionHandler:<wbr>)</a>
+                    </code>
+                  </div>
+                  <div class="height-container">
+                    <div class="pointer-container"></div>
+                    <section class="section">
+                      <div class="pointer"></div>
+                      <div class="abstract">
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">jumpToStep</span><span class="p">(</span><span class="kt">Int</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">download</span><span class="p">(</span><span class="n">_</span> <span class="nv">download</span><span class="p">:</span> <span class="kt">WKDownload</span><span class="p">,</span> <span class="n">decideDestinationUsing</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">URLResponse</span><span class="p">,</span> <span class="nv">suggestedFilename</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">URL</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/Nef10/SwiftScraper/blob/main/Sources/SwiftScraper/Steps/Common/StepFlowResult.swift#L17">Show on GitHub</a>
+                        <a href="https://github.com/Nef10/SwiftScraper/blob/main/Sources/SwiftScraper/Steps/DownloadStep.swift#L51-L57">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -237,9 +318,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12SwiftScraper14StepFlowResultO6finishyA2CmF"></a>
-                    <a name="//apple_ref/swift/Element/finish" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12SwiftScraper14StepFlowResultO6finishyA2CmF">finish</a>
+                    <a name="/c:@CM@SwiftScraper@objc(cs)DownloadStep(im)downloadDidFinish:"></a>
+                    <a name="//apple_ref/swift/Method/downloadDidFinish(_:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@SwiftScraper@objc(cs)DownloadStep(im)downloadDidFinish:">downloadDidFinish(_:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -247,19 +328,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>StepRunnerState stops executing, and finishes immediately with a state of <code><a href="../Enums/StepRunnerState.html#/s:12SwiftScraper15StepRunnerStateO7successyA2CmF">StepRunnerState.success</a></code>.</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="n">finish</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">downloadDidFinish</span><span class="p">(</span><span class="n">_</span> <span class="nv">download</span><span class="p">:</span> <span class="kt">WKDownload</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/Nef10/SwiftScraper/blob/main/Sources/SwiftScraper/Steps/Common/StepFlowResult.swift#L20">Show on GitHub</a>
+                        <a href="https://github.com/Nef10/SwiftScraper/blob/main/Sources/SwiftScraper/Steps/DownloadStep.swift#L59-L69">Show on GitHub</a>
                       </div>
                     </section>
                   </div>
@@ -267,9 +348,9 @@
                 <li class="item">
                   <div>
                     <code>
-                    <a name="/s:12SwiftScraper14StepFlowResultO7failureyACs5Error_pcACmF"></a>
-                    <a name="//apple_ref/swift/Element/failure(_:)" class="dashAnchor"></a>
-                    <a class="token" href="#/s:12SwiftScraper14StepFlowResultO7failureyACs5Error_pcACmF">failure(_:<wbr>)</a>
+                    <a name="/c:@CM@SwiftScraper@objc(cs)DownloadStep(im)download:didFailWithError:resumeData:"></a>
+                    <a name="//apple_ref/swift/Method/download(_:didFailWithError:resumeData:)" class="dashAnchor"></a>
+                    <a class="token" href="#/c:@CM@SwiftScraper@objc(cs)DownloadStep(im)download:didFailWithError:resumeData:">download(_:<wbr>didFailWithError:<wbr>resumeData:<wbr>)</a>
                     </code>
                   </div>
                   <div class="height-container">
@@ -277,19 +358,19 @@
                     <section class="section">
                       <div class="pointer"></div>
                       <div class="abstract">
-                        <p>StepRunnerState stops executing, and finishes immediately with a state of <code>StepRunnerState.failure</code>.</p>
+                        <p>Undocumented</p>
 
                       </div>
                       <div class="declaration">
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="k">case</span> <span class="nf">failure</span><span class="p">(</span><span class="kt">Error</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">download</span><span class="p">(</span><span class="n">_</span> <span class="nv">download</span><span class="p">:</span> <span class="kt">WKDownload</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">,</span> <span class="nv">resumeData</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
                       <div class="slightly-smaller">
-                        <a href="https://github.com/Nef10/SwiftScraper/blob/main/Sources/SwiftScraper/Steps/Common/StepFlowResult.swift#L23">Show on GitHub</a>
+                        <a href="https://github.com/Nef10/SwiftScraper/blob/main/Sources/SwiftScraper/Steps/DownloadStep.swift#L71-L73">Show on GitHub</a>
                       </div>
                     </section>
                   </div>

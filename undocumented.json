@@ -1,6 +1,26 @@
 {
   "warnings": [
-
+    {
+      "file": "/Users/runner/work/SwiftScraper/SwiftScraper/Sources/SwiftScraper/Steps/DownloadStep.swift",
+      "line": 51,
+      "symbol": "DownloadStep.download(_:decideDestinationUsing:suggestedFilename:completionHandler:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/SwiftScraper/SwiftScraper/Sources/SwiftScraper/Steps/DownloadStep.swift",
+      "line": 59,
+      "symbol": "DownloadStep.downloadDidFinish(_:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    },
+    {
+      "file": "/Users/runner/work/SwiftScraper/SwiftScraper/Sources/SwiftScraper/Steps/DownloadStep.swift",
+      "line": 71,
+      "symbol": "DownloadStep.download(_:didFailWithError:resumeData:)",
+      "symbol_kind": "source.lang.swift.decl.function.method.instance",
+      "warning": "undocumented"
+    }
   ],
   "source_directory": "/Users/runner/work/SwiftScraper/SwiftScraper"
 }
