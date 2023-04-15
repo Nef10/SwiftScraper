@@ -36,7 +36,7 @@ public class AsyncScriptStep: ScriptStep {
         // e.g. if params is ['a', 3], then the single array with 2 elems would get passed to super.init
         super.init(
             functionName: functionName,
-            params: [],
+            params: [Any](),
             paramsKeys: paramsKeys,
             handler: handler)
         super.params = params   // set the params here
