@@ -31,7 +31,7 @@ public class OpenPageStep: Step, NavigableStep {
                 completion(.failure(error, model))
                 return
             }
-            self.assertNavigation(with: browser, model: model, completion: completion)
+            assertNavigation(with: browser, model: model, completion: completion)
         }
     }
 }

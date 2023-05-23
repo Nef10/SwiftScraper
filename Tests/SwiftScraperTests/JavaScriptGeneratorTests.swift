@@ -105,7 +105,7 @@ class JavaScriptGeneratorTests: XCTestCase {
         XCTAssertEqual(jsonObject?["someString"] as? String, "lorem ipsum")
         XCTAssertEqual(jsonObject?["someInt"] as? Int, 3)
         XCTAssertEqual(jsonObject?["someDouble"] as? Double, 5.6)
-        XCTAssert(jsonObject?["someBool"] as? Bool == true)
+        XCTAssert(jsonObject?["someBool"] as? Bool == true) // swiftlint:disable:this xct_specific_matcher
         XCTAssertEqual(jsonObject?["someArray"] as? [Int], [1, 2, 3])
 
         let innerObject = jsonObject?["someObject"] as? JSON
