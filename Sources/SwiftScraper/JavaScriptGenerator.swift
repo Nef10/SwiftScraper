@@ -23,13 +23,17 @@ enum JavaScriptGenerator {
     private static func stringify(param: Any) throws -> String {
         if let string = param as? String {
             return "\"\(string)\""
-        } else if let bool = param as? Bool {
+        }
+        if let bool = param as? Bool {
             return bool ? "true" : "false"
-        } else if param is Int || param is Double {
+        }
+        if param is Int || param is Double {
             return "\(param)"
-        } else if param is NSNull {
+        }
+        if param is NSNull {
             return "null"
-        } else if JSONSerialization.isValidJSONObject(param),
+        }
+        if JSONSerialization.isValidJSONObject(param),
             let prettyJsonData = try? JSONSerialization.data(withJSONObject: param, options: []) {
             return String(decoding: prettyJsonData, as: UTF8.self)
         }

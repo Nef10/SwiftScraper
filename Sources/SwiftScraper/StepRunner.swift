@@ -133,22 +133,22 @@ public class StepRunner {
             guard let self else {
                 return
             }
-            self.model = result.model
+            model = result.model
             switch result {
             case .finish:
-                self.state = .success
+                state = .success
             case .proceed:
-                self.index += 1
-                guard self.index < self.steps.count else {
-                    self.state = .success
+                index += 1
+                guard index < steps.count else {
+                    state = .success
                     return
                 }
-                self.run()
+                run()
             case .jumpToStep(let nextStep, _):
-                self.index = nextStep
-                self.run()
+                index = nextStep
+                run()
             case .failure(let error, _):
-                self.state = .failure(error: error)
+                state = .failure(error: error)
             }
         }
     }

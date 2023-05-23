@@ -60,11 +60,11 @@ public class WaitForConditionStep: Step {
             switch result {
             case .success(let isOk):
                 if isOk as? Bool ?? false {
-                    self.reset()
+                    reset()
                     completion(.proceed(model))
                 } else {
-                    if Date().timeIntervalSince(startRunDate) > self.timeoutInSeconds {
-                        self.reset()
+                    if Date().timeIntervalSince(startRunDate) > timeoutInSeconds {
+                        reset()
                         completion(.failure(SwiftScraperError.timeout, model))
                     } else {
                         DispatchQueue.main.asyncAfter(deadline: .now() + Constants.refreshInterval) { [weak self] in
@@ -73,7 +73,7 @@ public class WaitForConditionStep: Step {
                     }
                 }
             case .failure(let error):
-                self.reset()
+                reset()
                 completion(.failure(error, model))
             }
         }

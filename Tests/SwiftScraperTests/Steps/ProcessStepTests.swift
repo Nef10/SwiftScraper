@@ -139,9 +139,8 @@ class ProcessStepTests: StepRunnerCommonTests {
             counter2 += 1
             if counter2 == 3 {
                 return .proceed  // continue as normal after 3 increments
-            } else {
-                return .jumpToStep(1)  // loop back to step2 again
             }
+            return .jumpToStep(1)  // loop back to step2 again
         }
 
         let stepRunner = try makeStepRunner(steps: [TestHelper.openPageOneStep, step2, step3])

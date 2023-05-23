@@ -65,7 +65,7 @@ public class ScriptStep: Step {
                 completion(.failure(error, model))
             case .success(let response):
                 var modelCopy = model
-                let result = self.handler(response, &modelCopy)
+                let result = handler(response, &modelCopy)
                 completion(result.convertToStepCompletionResult(with: modelCopy))
             }
         }
