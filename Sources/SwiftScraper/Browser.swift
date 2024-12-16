@@ -46,7 +46,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     private let moduleName: String
     private let logger = Logger()
     /// The webview itself
-    public private (set) var webView: WKWebView!
+    public private(set) var webView: WKWebView!
     private let userContentController = WKUserContentController()
     private var navigationCallback: NavigationCallback?
     private var asyncScriptCallback: ScriptResponseResultCallback?
@@ -105,7 +105,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     /// - Parameters:
     ///   - webView: The web view that loaded the content.
     ///   - navigation: The navigation object that finished.
-    public func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+    public func webView(_: WKWebView, didFinish _: WKNavigation!) {
         callNavigationCompletion(result: .success(()))
     }
 
@@ -117,8 +117,8 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     ///      to track the progress of that operation.
     ///   - error: The error that occurred.
     public func webView(
-        _ webView: WKWebView,
-        didFailProvisionalNavigation navigation: WKNavigation!,
+        _: WKWebView,
+        didFailProvisionalNavigation _: WKNavigation!,
         withError error: Error
     ) {
         logger.warning("didFailProvisionalNavigation: \(error.localizedDescription)")
@@ -132,7 +132,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     ///   - navigation: The navigation object for the operation. This object corresponds to a WKNavigation object
     ///      that WebKit returned when the load operation began. You use it to track the progress of that operation.
     ///   - error: The error that occurred.
-    public func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: Error) {
+    public func webView(_: WKWebView, didFail _: WKNavigation!, withError error: Error) {
         logger.warning("didFailNavigation: \(error.localizedDescription)")
         let nsError = error as NSError
         if nsError.domain == "NSURLErrorDomain" && nsError.code == NSURLErrorCancelled {
@@ -160,7 +160,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     ///   - userContentController: The user content controller that delivered the message to your handler.
     ///   - message: An object that contains the message details.
     public func userContentController(
-        _ userContentController: WKUserContentController,
+        _: WKUserContentController,
         didReceive message: WKScriptMessage
     ) {
         logger.debug("WKScriptMessage didReceiveMessage")

@@ -30,7 +30,7 @@ public class AsyncProcessStep: Step {
         self.handler = handler
     }
 
-    public func run(with browser: Browser, model: JSON, completion: @escaping StepCompletionCallback) {
+    public func run(with _: Browser, model: JSON, completion: @escaping StepCompletionCallback) {
         handler(model) { model, result in
             completion(result.convertToStepCompletionResult(with: model))
         }

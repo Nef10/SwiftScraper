@@ -19,7 +19,7 @@ public typealias ProcessStepHandler = (_ model: inout JSON) -> StepFlowResult
 
 // MARK: - ProcessStep
 
-/// Step that performs some processing, can update the model dictionary, 
+/// Step that performs some processing, can update the model dictionary,
 /// and can be used to drive control flow of the steps.
 public class ProcessStep: Step {
 
@@ -32,7 +32,7 @@ public class ProcessStep: Step {
         self.handler = handler
     }
 
-    public func run(with browser: Browser, model: JSON, completion: @escaping StepCompletionCallback) {
+    public func run(with _: Browser, model: JSON, completion: @escaping StepCompletionCallback) {
         var modelCopy = model
         let result = handler(&modelCopy)
         completion(result.convertToStepCompletionResult(with: modelCopy))

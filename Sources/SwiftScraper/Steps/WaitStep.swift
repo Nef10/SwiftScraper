@@ -20,7 +20,7 @@ public class WaitStep: Step {
         self.waitTimeInSeconds = waitTimeInSeconds
     }
 
-    public func run(with browser: Browser, model: JSON, completion: @escaping StepCompletionCallback) {
+    public func run(with _: Browser, model: JSON, completion: @escaping StepCompletionCallback) {
         DispatchQueue.main.asyncAfter(deadline: .now() + waitTimeInSeconds) {
             completion(.proceed(model))
         }

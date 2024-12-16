@@ -19,7 +19,7 @@ enum TestHelper {
 
 }
 
-class StepRunnerCommonTests: XCTestCase {
+class StepRunnerCommonTests: XCTestCase { // swiftlint:disable:this final_test_case
 
     var stepRunnerStates: [StepRunnerState] = [] // swiftlint:disable:this test_case_accessibility
 
