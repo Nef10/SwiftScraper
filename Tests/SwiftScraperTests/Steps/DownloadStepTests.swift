@@ -22,6 +22,10 @@ class DownloadStepTests: StepRunnerCommonTests {
 
     @available(iOS 14.5, macOS 11.3, *)
     func testDownloadStep() throws {
+        guard ProcessInfo.processInfo.environment["CI"] != "true" else {
+            // GitHub Actions isn't able to open the local file in the webview
+            return
+        }
         let exp = expectation(description: #function)
         let exp1 = expectation(description: #function)
         let downloadStep = DownloadStep(url: downloadURL) { result, _ in
