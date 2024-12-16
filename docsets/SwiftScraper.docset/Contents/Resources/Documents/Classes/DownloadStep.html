@@ -40,7 +40,9 @@
     </header>
 
     <p class="breadcrumbs">
-      <a class="breadcrumb" href="../index.html">SwiftScraper Reference</a>
+      <a class="breadcrumb" href="../index.html">SwiftScraper</a>
+      <img class="carat" src="../img/carat.png" alt=""/>
+      <a class="breadcrumb" href="../Classes.html">Classes</a>
       <img class="carat" src="../img/carat.png" alt=""/>
       DownloadStep Class Reference
     </p>
@@ -158,7 +160,7 @@
               <div class="declaration">
                 <div class="language">
                   
-                  <pre class="highlight swift"><code><span class="kd">@available(iOS 14.5, macOS 11.3, *)</span>
+                  <pre class="highlight swift"><code><span class="kd">@available</span><span class="p">(</span><span class="n">iOS</span> <span class="mf">14.5</span><span class="p">,</span> <span class="n">macOS</span> <span class="mf">11.3</span><span class="p">,</span> <span class="o">*</span><span class="p">)</span>
 <span class="kd">public</span> <span class="kd">class</span> <span class="kt">DownloadStep</span> <span class="p">:</span> <span class="kt">NSObject</span><span class="p">,</span> <span class="kt"><a href="../Protocols/Step.html">Step</a></span></code></pre>
 <pre class="highlight swift"><code><span class="kd">extension</span> <span class="kt">DownloadStep</span><span class="p">:</span> <span class="kt">WKDownloadDelegate</span></code></pre>
 
@@ -305,7 +307,7 @@ for modification.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">download</span><span class="p">(</span><span class="n">_</span> <span class="nv">download</span><span class="p">:</span> <span class="kt">WKDownload</span><span class="p">,</span> <span class="n">decideDestinationUsing</span> <span class="nv">response</span><span class="p">:</span> <span class="kt">URLResponse</span><span class="p">,</span> <span class="nv">suggestedFilename</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">URL</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">download</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">WKDownload</span><span class="p">,</span> <span class="n">decideDestinationUsing</span> <span class="nv">_</span><span class="p">:</span> <span class="kt">URLResponse</span><span class="p">,</span> <span class="nv">suggestedFilename</span><span class="p">:</span> <span class="kt">String</span><span class="p">,</span> <span class="nv">completionHandler</span><span class="p">:</span> <span class="kd">@escaping</span> <span class="p">(</span><span class="kt">URL</span><span class="p">?)</span> <span class="o">-&gt;</span> <span class="kt">Void</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -335,7 +337,7 @@ for modification.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">downloadDidFinish</span><span class="p">(</span><span class="n">_</span> <span class="nv">download</span><span class="p">:</span> <span class="kt">WKDownload</span><span class="p">)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">downloadDidFinish</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">WKDownload</span><span class="p">)</span></code></pre>
 
                         </div>
                       </div>
@@ -365,7 +367,7 @@ for modification.</p>
                         <h4>Declaration</h4>
                         <div class="language">
                           <p class="aside-title">Swift</p>
-                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">download</span><span class="p">(</span><span class="n">_</span> <span class="nv">download</span><span class="p">:</span> <span class="kt">WKDownload</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">,</span> <span class="nv">resumeData</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?)</span></code></pre>
+                          <pre class="highlight swift"><code><span class="kd">public</span> <span class="kd">func</span> <span class="nf">download</span><span class="p">(</span><span class="nv">_</span><span class="p">:</span> <span class="kt">WKDownload</span><span class="p">,</span> <span class="n">didFailWithError</span> <span class="nv">error</span><span class="p">:</span> <span class="kt">Error</span><span class="p">,</span> <span class="n">resumeData</span> <span class="nv">_</span><span class="p">:</span> <span class="kt">Data</span><span class="p">?)</span></code></pre>
 
                         </div>
                       </div>
@@ -383,8 +385,8 @@ for modification.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://github.com/Nef10" target="_blank" rel="external noopener">Nef10</a>. All rights reserved. (Last updated: 2023-03-12)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+      <p>&copy; 2024 <a class="link" href="https://github.com/Nef10" target="_blank" rel="external noopener">Nef10</a>. All rights reserved. (Last updated: 2024-12-16)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
 </html>

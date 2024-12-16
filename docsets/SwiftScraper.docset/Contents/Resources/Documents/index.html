@@ -39,9 +39,7 @@
     </header>
 
     <p class="breadcrumbs">
-      <a class="breadcrumb" href="index.html">SwiftScraper Reference</a>
-      <img class="carat" src="img/carat.png" alt=""/>
-      SwiftScraper  Reference
+      <a class="breadcrumb" href="index.html">SwiftScraper</a>
     </p>
 
     <div class="content-wrapper">
@@ -228,7 +226,7 @@
 <p>In the <code>GoogleSearch.js</code> file, add the following function which will just check the title of the page is correct.</p>
 <pre class="highlight javascript"><code><span class="kd">var</span> <span class="nx">GoogleSearch</span> <span class="o">=</span> <span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
     <span class="kd">function</span> <span class="nx">assertGoogleTitle</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">==</span> <span class="s2">"Google"</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">Google</span><span class="dl">"</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="na">assertGoogleTitle</span><span class="p">:</span> <span class="nx">assertGoogleTitle</span>
@@ -274,11 +272,11 @@ In this case check out the advanced usage to add a step which waits till the pag
     <span class="c1">// ...</span>
 
     <span class="kd">function</span> <span class="nx">performSearch</span><span class="p">(</span><span class="nx">searchText</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">'input[type="text"], input[type="Search"]'</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">searchText</span><span class="p">;</span>
+        <span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="dl">'</span><span class="s1">input[type="text"], input[type="Search"]</span><span class="dl">'</span><span class="p">).</span><span class="nx">value</span> <span class="o">=</span> <span class="nx">searchText</span><span class="p">;</span>
         <span class="nb">document</span><span class="p">.</span><span class="nx">forms</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">submit</span><span class="p">();</span>
     <span class="p">}</span>
     <span class="kd">function</span> <span class="nx">assertSearchResultTitle</span><span class="p">()</span> <span class="p">{</span>
-        <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">==</span> <span class="s2">"SwiftScraper iOS - Google Search"</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nb">document</span><span class="p">.</span><span class="nx">title</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">SwiftScraper iOS - Google Search</span><span class="dl">"</span><span class="p">;</span>
     <span class="p">}</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="na">assertGoogleTitle</span><span class="p">:</span> <span class="nx">assertGoogleTitle</span><span class="p">,</span>
@@ -305,9 +303,9 @@ In this case check out the advanced usage to add a step which waits till the pag
     <span class="c1">// ...</span>
 
     <span class="kd">function</span> <span class="nx">getSearchResults</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">headings</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'h3.r'</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">headings</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">h3.r</span><span class="dl">'</span><span class="p">);</span>
         <span class="k">return</span> <span class="nb">Array</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">slice</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="nx">headings</span><span class="p">).</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">h3</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="p">{</span> <span class="s1">'text'</span><span class="p">:</span> <span class="nx">h3</span><span class="p">.</span><span class="nx">innerText</span><span class="p">,</span> <span class="s1">'href'</span><span class="p">:</span> <span class="nx">h3</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">href</span> <span class="p">};</span>
+            <span class="k">return</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">text</span><span class="dl">'</span><span class="p">:</span> <span class="nx">h3</span><span class="p">.</span><span class="nx">innerText</span><span class="p">,</span> <span class="dl">'</span><span class="s1">href</span><span class="dl">'</span><span class="p">:</span> <span class="nx">h3</span><span class="p">.</span><span class="nx">childNodes</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="nx">href</span> <span class="p">};</span>
         <span class="p">});</span>
     <span class="p">}</span>
 
@@ -353,11 +351,11 @@ In this case check out the advanced usage to add a step which waits till the pag
     <span class="c1">// ...</span>
 
     <span class="kd">function</span> <span class="nx">scrollAndCountImages</span><span class="p">()</span> <span class="p">{</span>
-        <span class="kd">var</span> <span class="nx">firstCount</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'img'</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">firstCount</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">img</span><span class="dl">'</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
         <span class="nb">window</span><span class="p">.</span><span class="nx">scrollTo</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">document</span><span class="p">.</span><span class="nx">body</span><span class="p">.</span><span class="nx">scrollHeight</span><span class="p">);</span>
         <span class="nx">setTimeout</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-            <span class="kd">var</span> <span class="nx">secondCount</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="s1">'img'</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
-            <span class="nx">SwiftScraper</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="s1">'first'</span><span class="p">:</span> <span class="nx">firstCount</span><span class="p">,</span> <span class="s1">'second'</span><span class="p">:</span> <span class="nx">secondCount</span><span class="p">});</span>
+            <span class="kd">var</span> <span class="nx">secondCount</span> <span class="o">=</span> <span class="nb">document</span><span class="p">.</span><span class="nx">querySelectorAll</span><span class="p">(</span><span class="dl">'</span><span class="s1">img</span><span class="dl">'</span><span class="p">).</span><span class="nx">length</span><span class="p">;</span>
+            <span class="nx">SwiftScraper</span><span class="p">.</span><span class="nx">postMessage</span><span class="p">({</span><span class="dl">'</span><span class="s1">first</span><span class="dl">'</span><span class="p">:</span> <span class="nx">firstCount</span><span class="p">,</span> <span class="dl">'</span><span class="s1">second</span><span class="dl">'</span><span class="p">:</span> <span class="nx">secondCount</span><span class="p">});</span>
         <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
     <span class="p">}</span>
 
@@ -534,8 +532,8 @@ and can easily lead to unmaintainable spaghetti 🍝 steps.</p>
       </article>
     </div>
     <section class="footer">
-      <p>&copy; 2023 <a class="link" href="https://github.com/Nef10" target="_blank" rel="external noopener">Nef10</a>. All rights reserved. (Last updated: 2023-03-12)</p>
-      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.14.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
+      <p>&copy; 2024 <a class="link" href="https://github.com/Nef10" target="_blank" rel="external noopener">Nef10</a>. All rights reserved. (Last updated: 2024-12-16)</p>
+      <p>Generated by <a class="link" href="https://github.com/realm/jazzy" target="_blank" rel="external noopener">jazzy ♪♫ v0.15.3</a>, a <a class="link" href="https://realm.io" target="_blank" rel="external noopener">Realm</a> project.</p>
     </section>
   </body>
 </html>
