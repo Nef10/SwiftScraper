@@ -92,6 +92,11 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
         webView.navigationDelegate = self
         webView.allowsBackForwardNavigationGestures = true
         webView.customUserAgent = customUserAgent
+#if DEBUG
+        if #available(macOS 13.3, iOS 16.4, *) {
+            webView.isInspectable = true
+        }
+#endif
     }
 
     // MARK: - WKNavigationDelegate
