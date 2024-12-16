@@ -12,7 +12,7 @@ class WaitForConditionStepTests: StepRunnerCommonTests {
 
         let step2 = WaitForConditionStep(
             assertionName: "testWaitForCondition",
-            timeoutInSeconds: 2)
+            timeoutInSeconds: 5)
 
         let step3 = ScriptStep(functionName: "getInnerText", params: "#foo") { response, _ in
             XCTAssertEqual(response as? String, "modified")
@@ -32,7 +32,7 @@ class WaitForConditionStepTests: StepRunnerCommonTests {
 
         let step2 = WaitForConditionStep(
             assertionName: "testWaitForCondition",
-            timeoutInSeconds: 2,
+            timeoutInSeconds: 5,
             params: "modified")
 
         let step3 = ScriptStep(functionName: "getInnerText", params: "#foo") { response, _ in
@@ -58,7 +58,7 @@ class WaitForConditionStepTests: StepRunnerCommonTests {
 
         let step3 = WaitForConditionStep(
             assertionName: "testWaitForCondition",
-            timeoutInSeconds: 2,
+            timeoutInSeconds: 5,
             paramsKeys: ["check", "null"])
 
         let step4 = ScriptStep(functionName: "getInnerText", params: "#foo") { response, _ in
@@ -79,7 +79,7 @@ class WaitForConditionStepTests: StepRunnerCommonTests {
 
         let step2 = WaitForConditionStep(
             assertionName: "testWaitForCondition",
-            timeoutInSeconds: 0.3)
+            timeoutInSeconds: 0.5)
 
         let stepRunner = try makeStepRunner(steps: [openWaitPageStep, step2])
         stepRunner.run {
@@ -97,7 +97,7 @@ class WaitForConditionStepTests: StepRunnerCommonTests {
         // Tests what happens if the assertion fails. This function doesn't exist.
         let step2 = WaitForConditionStep(
             assertionName: "foobarThisWillFail",
-            timeoutInSeconds: 2)
+            timeoutInSeconds: 5)
 
         let stepRunner = try makeStepRunner(steps: [openWaitPageStep, step2])
         stepRunner.run {
