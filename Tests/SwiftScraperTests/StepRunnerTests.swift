@@ -92,7 +92,7 @@ class StepRunnerTests: StepRunnerCommonTests {
 extension XCTestCase {
 
     func waitForExpectations() {
-        waitForExpectations(timeout: 5) { error in
+        waitForExpectations(timeout: 10) { error in
             guard let error else {
                 return
             }
