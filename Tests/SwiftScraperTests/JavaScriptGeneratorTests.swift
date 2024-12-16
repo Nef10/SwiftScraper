@@ -9,7 +9,7 @@
 @testable import SwiftScraper
 import XCTest
 
-class JavaScriptGeneratorTests: XCTestCase {
+final class JavaScriptGeneratorTests: XCTestCase {
 
     func testGenerateScriptNoArg() {
         let script = try? JavaScriptGenerator.generateScript(moduleName: "MyModule", functionName: "doSomething")

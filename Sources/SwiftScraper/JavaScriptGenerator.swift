@@ -35,7 +35,7 @@ enum JavaScriptGenerator {
         }
         if JSONSerialization.isValidJSONObject(param),
             let prettyJsonData = try? JSONSerialization.data(withJSONObject: param, options: []) {
-            return String(decoding: prettyJsonData, as: UTF8.self)
+            return String(data: prettyJsonData, encoding: .utf8) ?? ""
         }
         throw SwiftScraperError.parameterSerialization
     }
