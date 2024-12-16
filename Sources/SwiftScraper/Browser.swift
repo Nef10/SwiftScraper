@@ -39,6 +39,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     private enum Constants {
         static let coreScript = "SwiftScraper"
         static let messageHandlerName = "swiftScraperResponseHandler"
+        static let navigationTimeout: TimeInterval = 30
     }
 
     // MARK: - Properties
@@ -50,6 +51,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     private let userContentController = WKUserContentController()
     private var navigationCallback: NavigationCallback?
     private var asyncScriptCallback: ScriptResponseResultCallback?
+    private var timer: Timer?
 
     // MARK: - Setup
 
@@ -143,6 +145,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     }
 
     private func callNavigationCompletion(result: NavigationResult) {
+        timer?.invalidate()
         guard let navigationCompletion = self.navigationCallback else {
             return
         }
@@ -151,6 +154,16 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
         // This is because the completion is the code that triggers the next step.
         self.navigationCallback = nil
         navigationCompletion(result)
+    }
+
+    private func sheduleTimeoutTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: Constants.navigationTimeout, repeats: false) { [weak self] _ in
+            self?.timer?.invalidate()
+            if let navigationCallback = self?.navigationCallback {
+                self?.navigationCallback = nil
+                navigationCallback(.failure(.timeout))
+            }
+        }
     }
 
     // MARK: - WKScriptMessageHandler
@@ -191,6 +204,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     /// Loads a page with the given path into the WebView.
     func load(path: String, completion: @escaping NavigationCallback) {
         self.navigationCallback = completion
+        sheduleTimeoutTimer()
         webView.load(URLRequest(url: URL(string: path)!))
     }
 
@@ -224,6 +238,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
     /// Run some JavaScript that results in a page being loaded (i.e. navigation happens).
     func runPageChangeScript(functionName: String, params: [Any] = [], completion: @escaping NavigationCallback) {
         self.navigationCallback = completion
+        sheduleTimeoutTimer()
         runScript(functionName: functionName, params: params) { result in
             if case .failure(let error) = result {
                 completion(.failure(error))
