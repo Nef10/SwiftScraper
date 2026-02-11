@@ -48,7 +48,7 @@ public class DownloadStep: NSObject, Step {
 @available(iOS 14.5, macOS 11.3, *)
 extension DownloadStep: WKDownloadDelegate {
 
-    public func download(_: WKDownload, decideDestinationUsing _: URLResponse, suggestedFilename: String, completionHandler: @escaping (URL?) -> Void) {
+    public func download(_: WKDownload, decideDestinationUsing _: URLResponse, suggestedFilename: String, completionHandler: (URL?) -> Void) {
         let temporaryDir = NSTemporaryDirectory()
         let fileName = temporaryDir + "/" + suggestedFilename + UUID().description
         let url = URL(fileURLWithPath: fileName)
@@ -61,7 +61,7 @@ extension DownloadStep: WKDownloadDelegate {
             let text = try String(contentsOf: destinationURL, encoding: .utf8)
             try? FileManager.default.removeItem(at: destinationURL)
             var modelCopy: JSON = model
-            let result = self.handler(text, &modelCopy)
+            let result = handler(text, &modelCopy)
             completion?(result.convertToStepCompletionResult(with: modelCopy))
         } catch {
             completion?(.failure(SwiftScraperError.couldNotReadDownloadedFile, model))
