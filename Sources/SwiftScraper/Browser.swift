@@ -146,13 +146,13 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
 
     private func callNavigationCompletion(result: NavigationResult) {
         timer?.invalidate()
-        guard let navigationCompletion = self.navigationCallback else {
+        guard let navigationCompletion = navigationCallback else {
             return
         }
         // Make a local copy of closure before setting to nil, to due async nature of this,
         // there is a timing issue if simply setting to nil after calling the completion.
         // This is because the completion is the code that triggers the next step.
-        self.navigationCallback = nil
+        navigationCallback = nil
         navigationCompletion(result)
     }
 
@@ -203,7 +203,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
 
     /// Loads a page with the given path into the WebView.
     func load(path: String, completion: @escaping NavigationCallback) {
-        self.navigationCallback = completion
+        navigationCallback = completion
         sheduleTimeoutTimer()
         webView.load(URLRequest(url: URL(string: path)!))
     }
@@ -237,7 +237,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
 
     /// Run some JavaScript that results in a page being loaded (i.e. navigation happens).
     func runPageChangeScript(functionName: String, params: [Any] = [], completion: @escaping NavigationCallback) {
-        self.navigationCallback = completion
+        navigationCallback = completion
         sheduleTimeoutTimer()
         runScript(functionName: functionName, params: params) { result in
             if case .failure(let error) = result {
@@ -249,7 +249,7 @@ public class Browser: NSObject, WKNavigationDelegate, WKScriptMessageHandler {
 
     /// Run JavaScript asynchronously - the completion is called when a script message is received back from JavaScript
     func runAsyncScript(functionName: String, params: [Any] = [], completion: @escaping ScriptResponseResultCallback) {
-        self.asyncScriptCallback = completion
+        asyncScriptCallback = completion
         runScript(functionName: functionName, params: params) { result in
             if case .failure = result {
                 completion(result)

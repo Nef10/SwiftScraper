@@ -34,7 +34,7 @@ class AsyncProcessStepTests: StepRunnerCommonTests {
 
         XCTAssertEqual(stepRunnerStates,
                        [.inProgress(index: 0), .inProgress(index: 1), .inProgress(index: 2), .success])
-        self.assertModel(stepRunner.model)
+        assertModel(stepRunner.model)
     }
 
     func testAsyncProcessStepFinishEarly() throws {

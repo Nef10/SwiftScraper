@@ -23,7 +23,7 @@ extension NavigableStep {
     /// - parameter model: A JSON model that allows data to be passed from step to step in the pipeline.
     /// - parameter completion: The completion called to indicate success or failure.
     func assertNavigation(with browser: Browser, model: JSON, completion: @escaping StepCompletionCallback) {
-        guard let assertionName = self.assertionName else {
+        guard let assertionName else {
             completion(.proceed(model))
             return
         }

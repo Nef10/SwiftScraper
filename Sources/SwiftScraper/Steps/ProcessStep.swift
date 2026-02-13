@@ -32,7 +32,7 @@ public class ProcessStep: Step {
         self.handler = handler
     }
 
-    public func run(with _: Browser, model: JSON, completion: @escaping StepCompletionCallback) {
+    public func run(with _: Browser, model: JSON, completion: StepCompletionCallback) {
         var modelCopy = model
         let result = handler(&modelCopy)
         completion(result.convertToStepCompletionResult(with: modelCopy))
